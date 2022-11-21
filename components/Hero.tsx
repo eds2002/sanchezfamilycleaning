@@ -1,10 +1,9 @@
 import React from 'react'
 import {Button} from './'
-import {EnvelopeIcon, PhoneIcon} from '@heroicons/react/24/solid'
 
 const Hero:React.FC = () => {
   return (
-    <section className = "py-48">
+    <section className = "py-32 md:py-48">
       <div className = "flex items-center justify-start h-full px-4 mx-auto max-w-7xl">
         <div className = "flex flex-col items-start">
           <h1 className = "max-w-lg text-5xl font-semibold lg:text-7xl">
