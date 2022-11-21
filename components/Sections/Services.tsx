@@ -59,6 +59,7 @@ const Services:React.FC = () => {
             <ServiceCard 
               service = {service}
               index = {index}
+              key = {service.title}
             />
           ))}
         </div>
@@ -96,7 +97,7 @@ const ServiceCard:React.FC<iServiceCardProps> = ({service,index}) =>{
       </div>
       <div className = "divide-y divide-gray-600 divide-opacity-40">
         {service.includes.map((feature)=>(
-          <li className = "flex items-center py-2 text-sm gap-x-3">
+          <li className = "flex items-center py-2 text-sm gap-x-3" key = {feature}>
             <CheckBadgeIcon className = {`
               w-4 h-4
               ${index === 2 ? 'text-cyan-400' : 'text-slate-900'}

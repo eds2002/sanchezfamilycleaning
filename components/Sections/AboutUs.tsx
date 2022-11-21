@@ -48,7 +48,7 @@ const AboutUs:React.FC = () => {
           </div>
           <div className = "grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 place-items-start">
             {details.map((detail)=>(
-              <div className = "relative flex flex-col items-start justify-start h-full pl-4 border-l-[0.5px] border-white/20">
+              <div className = "relative flex flex-col items-start justify-start h-full pl-4 border-l-[0.5px] border-white/20" key = {detail.title}>
                   <detail.icon className = "w-12 h-12 text-cyan-400"/>
                 <h4 className = "mt-4 text-sm font-medium text-white sm:text-base">
                   {detail.title}

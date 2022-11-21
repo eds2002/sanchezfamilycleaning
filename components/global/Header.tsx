@@ -26,7 +26,7 @@ const Header:React.FC = () => {
           <h1 className = "text-3xl font-semibold">S.F.C</h1>
           <div className = "items-center hidden list-none gap-x-3 md:flex">
             {navItems.map((nav:string)=>(
-              <li className = "px-2 py-1 text-sm rounded-md cursor-pointer hover:bg-slate-100">
+              <li className = "px-2 py-1 text-sm rounded-md cursor-pointer hover:bg-slate-100" key = {nav}>
                 {nav}
               </li>
             ))}
@@ -86,11 +86,11 @@ const MobileNav:React.FC<{openMobileNav:boolean,setOpenMobileNav:(openMobileNav:
         </div>
         <div className = "list-none divide-y mt-7 divide-black/5">
           {mobileNavItems.map((navItem)=>(
-            <li className = {navItem?.subLinks && ('bg-neutral-200/30')}>
+            <li className = {navItem?.subLinks && ('bg-neutral-200/30')} key = {navItem.title}>
               <p className = {`p-4 text-lg font-medium  ${navItem?.subLinks ? ('border-b cursor-default') : ('hover:opacity-70 cursor-pointer')}`}>{navItem?.title}</p>
               <ul className = "divide-y divide-black/5s">  
                 {navItem?.subLinks?.map((sub)=>(
-                  <li className = "flex items-center justify-between px-8 py-4 text-lg font-medium cursor-pointer hover:opacity-70">
+                  <li className = "flex items-center justify-between px-8 py-4 text-lg font-medium cursor-pointer hover:opacity-70" key = {sub}>
                     {sub}
                     <ChevronRightIcon className = "w-5 h-5"/>
                   </li>
