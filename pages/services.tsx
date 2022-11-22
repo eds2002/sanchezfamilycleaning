@@ -11,7 +11,6 @@ const Services:NextPage = () => {
       </Head>
       <Header/>
       <main>
-        {/* <PricingHero/> */}
         <CompareServices/>
       </main>
       <Footer/>

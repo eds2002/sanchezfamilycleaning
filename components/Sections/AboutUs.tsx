@@ -1,15 +1,11 @@
 import React from 'react'
 import { ClockIcon, MegaphoneIcon, CheckBadgeIcon,BriefcaseIcon, ChevronRightIcon} from '@heroicons/react/24/solid'
 import {Button} from '../'
+import Link from 'next/link'
 
 const AboutUs:React.FC = () => {
 
   const details = [
-    {
-      icon:ClockIcon,
-      title:'Over 20 years of experience',
-      paragraph:'Over the past 2 decades we have dedicated our craft to providing the best possible service out there.'
-    },
     {
       icon:MegaphoneIcon,
       title:'Always on time',
@@ -37,14 +33,16 @@ const AboutUs:React.FC = () => {
             We make your place cleaner. Our products and service makes it easier for businesses to manage their cleaning. So when people come together to collaborate and work, the shared environment is more hygienic and healthy.
           </p>
           <div className = "mt-5 mb-10">
-            <Button
-            theme = 'secondary'
-            >
-              <div className = "flex items-center justify-center gap-x-1">
-                <p className = "text-sm">Request a quote</p>
-                <ChevronRightIcon className = "w-3 h-3"/>
-              </div>
-            </Button>
+            <Link href = "/request-a-quote">
+              <Button
+              theme = 'secondary'
+              >
+                <div className = "flex items-center justify-center gap-x-1">
+                  <p className = "text-sm">Request a quote</p>
+                  <ChevronRightIcon className = "w-3 h-3"/>
+                </div>
+              </Button>
+            </Link>
           </div>
           <div className = "grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 place-items-start">
             {details.map((detail)=>(

@@ -12,6 +12,7 @@ export {default as Motives} from './Sections/Motives'
 export {default as ContactUs} from './Sections/ContactUs'
 export {default as PricingHero} from './Sections/PricingHero'
 export {default as CompareServices} from './Sections/CompareServices'
+export {default as QuoteHero} from './Sections/QuoteHero'
 
 // Elements Folder
 export {default as Button} from './Elements/Button'

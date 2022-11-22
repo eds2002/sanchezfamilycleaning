@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import {Button} from './'
 
@@ -13,12 +14,14 @@ const Hero:React.FC = () => {
             Reduce clutter & increase productivity: Sanchez Family Cleaning is a well respected and trusted company dedicated to keeping your offices clean. 
           </p>
           <div className = "flex w-max gap-x-3 mt-7">
-            <Button
-              text = ''
-              theme = 'primary'
-            >
-              <p className = "text-sm w-max sm:text-base">Request a quote</p>
-            </Button>
+            <Link href = "/request-a-quote">
+              <Button
+                text = ''
+                theme = 'primary'
+              >
+                <p className = "text-sm w-max sm:text-base">Request a quote</p>
+              </Button>
+            </Link>
             <Button
               text = ''
               theme = 'outline'

@@ -1,6 +1,7 @@
 import React,{Fragment} from 'react'
 import { Button } from '..'
 import { CheckIcon, MinusIcon } from '@heroicons/react/20/solid'
+import Link from 'next/link'
 
 const CompareServices:React.FC = () => {
   return (
@@ -20,19 +21,22 @@ const tiers = [
   { 
     name: 'Basic', 
     href: '#', 
-    description: 'Business love this package the most.' 
+    description: 'Business love this package the most.',
+    handle:'/request-a-quote?quote=basic',
   },
   {
     name: 'Deep',
     href: '#',
     priceMonthly: 29,
     description: 'Business use this if they need a deep cleaning of their building',
+    handle:'/request-a-quote?quote=deep',
   },
   {
     name: 'Custom',
     href: '#',
     priceMonthly: 59,
     description: "Our packages don't meet your needs? Choose what you need.",
+    handle:'/request-a-quote?quote=custom',
   },
 ]
 const sections = [
@@ -237,12 +241,14 @@ const Comparison:React.FC = () => {
                 <h2 className="text-3xl font-medium leading-6">{tier.name}</h2>
                 <p className="max-w-xs mt-4 text-sm sm:text-base lg:text-lg ">{tier.description}</p>
                 <div className = "mt-4">
-                  <Button
-                  theme = 'primary'
-                  fullWidth={true}
-                  >
-                    <p className = "text-sm sm:text-base">Get a quote for {tier.name}</p>
-                  </Button>
+                  <Link href = {tier.handle}>
+                    <Button
+                    theme = 'primary'
+                    fullWidth={true}
+                    >
+                      <p className = "text-sm sm:text-base">Get a quote for {tier.name}</p>
+                    </Button>
+                  </Link>
                 </div>
               </div>
 
@@ -273,7 +279,7 @@ const Comparison:React.FC = () => {
                           ) : (
                             <>
                               {feature.tiers[tier.name] === true ? (
-                                <CheckIcon className="w-5 h-5 ml-auto text-indigo-500" aria-hidden="true" />
+                                <CheckIcon className="w-5 h-5 ml-auto text-indigo-600" aria-hidden="true" />
                               ) : (
                                 <MinusIcon className="w-5 h-5 ml-auto text-gray-400" aria-hidden="true" />
                               )}
@@ -289,12 +295,14 @@ const Comparison:React.FC = () => {
               ))}
 
                 <div className = "mt-4">
-                  <Button
-                  theme = 'primary'
-                  fullWidth={true}
-                  >
-                    <p className = "text-sm sm:text-base">Get a quote for {tier.name}</p>
-                  </Button>
+                  <Link href = {tier.handle}>
+                    <Button
+                    theme = 'primary'
+                    fullWidth={true}
+                    >
+                      <p className = "text-sm sm:text-base">Get a quote for {tier.name}</p>
+                    </Button>
+                  </Link>
                 </div>
             </section>
           ))}

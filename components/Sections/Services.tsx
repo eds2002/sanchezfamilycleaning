@@ -1,13 +1,15 @@
 import { CheckBadgeIcon } from '@heroicons/react/24/solid'
 import {Button} from '../'
 import React from 'react'
+import Link from 'next/link'
 
 const Services:React.FC = () => {
 
   const servicesArr = [
     {
-      title:"Build your own",
+      title:"Custom",
       desc:"Customize your package.",
+      handle:"/request-a-quote?quote=custom",
       includes:[
         'Bathroom Cleaning',
         'Office cleaning',
@@ -20,8 +22,9 @@ const Services:React.FC = () => {
       ]
     },
     {
-      title:"Commercial Cleaning",
+      title:"Deep",
       desc:"The deep clean package.",
+      handle:"/request-a-quote?quote=deep",
       includes:[
         'Carpets & Floors',
         'Windows & Mirrors',
@@ -32,8 +35,9 @@ const Services:React.FC = () => {
       ]
     },
     {
-      title:"Starter cleaning",
+      title:"Basic",
       desc:"Most business choose this.",
+      handle:"/request-a-quote?quote=basic",
       includes:[
         'Bathroom Cleaning',
         'Office cleaning',
@@ -74,6 +78,7 @@ interface iServiceCardProps{
     desc:string;
     includes:Array<string>;
     title:string;
+    handle:string;
   }
   index:number
 }
@@ -88,12 +93,14 @@ const ServiceCard:React.FC<iServiceCardProps> = ({service,index}) =>{
       <h5 className = "text-2xl font-medium">{service.title}</h5>
       <p className = "text-sm sm:text-base">{service.desc}</p>
       <div className = "w-full mt-4 mb-4">
-        <Button
-        theme = {`${index === 2 ? 'secondary' : 'primary'}`}
-        fullWidth={true}
-        >
-          <p className = "text-sm sm:text-base">Request a quote</p>
-        </Button>
+        <Link href = {service.handle}>
+          <Button
+          theme = {`${index === 2 ? 'secondary' : 'primary'}`}
+          fullWidth={true}
+          >
+            <p className = "text-sm sm:text-base">Request a quote</p>
+          </Button>
+        </Link>
       </div>
       <div className = "divide-y divide-gray-600 divide-opacity-40">
         {service.includes.map((feature)=>(

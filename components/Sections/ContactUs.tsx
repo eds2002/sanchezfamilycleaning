@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { Button } from '..'
 
@@ -12,11 +13,13 @@ const ContactUs:React.FC = () => {
             We are just one email away! Interested, or curious about anything? Leave us a message! We&apos;ll get back to you as soon as possible. We&apos;re hoping to hear from you.
           </p>
           <div className = "flex items-center justify-center mt-6 gap-x-3 w-max">
-            <Button
-            theme = 'tertiary'
-            >
-              <p className = "text-sm sm:text-base">Request a quote</p>
-            </Button>
+            <Link href = "/request-a-quote">
+              <Button
+              theme = 'tertiary'
+              >
+                <p className = "text-sm sm:text-base">Request a quote</p>
+              </Button>
+            </Link>
             <a className = "text-xs text-indigo-600 cursor-pointer sm:text-sm whitespace-nowrap">Contact us</a>
           </div>
         </div>
