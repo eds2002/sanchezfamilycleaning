@@ -4,11 +4,11 @@ import { CheckIcon, MinusIcon } from '@heroicons/react/20/solid'
 
 const CompareServices:React.FC = () => {
   return (
-    <section className = "relative pt-32 pb-24 text-white bg-slate-900">
+    <section className = "relative bg-white">
       <div className = "px-4 mx-auto max-w-7xl ">
-        <Example/>
+        <Comparison/>
       </div>
-      <svg className = "absolute top-0"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,128L1440,64L1440,0L0,0Z"></path></svg>
+      {/* <svg className = "absolute top-0"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,128L1440,64L1440,0L0,0Z"></path></svg> */}
     </section>
   )
 }
@@ -225,7 +225,7 @@ const sections = [
 ]
 
 
-const Example:React.FC = () => {
+const Comparison:React.FC = () => {
   return (
     <div>
       <div className="py-16 mx-auto max-w-7xl sm:py-24 sm:px-6 lg:px-8">
@@ -233,12 +233,12 @@ const Example:React.FC = () => {
         <div className="max-w-2xl mx-auto space-y-16 lg:hidden">
           {tiers.map((tier, tierIdx) => (
             <section key={tier.name}>
-              <div className="px-4 mb-8">
-                <h2 className="text-3xl font-medium leading-6 text-white">{tier.name}</h2>
-                <p className="max-w-xs mt-4 text-sm sm:text-base lg:text-lg text-white/70">{tier.description}</p>
+              <div className="mb-8 lg:px-4">
+                <h2 className="text-3xl font-medium leading-6">{tier.name}</h2>
+                <p className="max-w-xs mt-4 text-sm sm:text-base lg:text-lg ">{tier.description}</p>
                 <div className = "mt-4">
                   <Button
-                  theme = 'secondary'
+                  theme = 'primary'
                   fullWidth={true}
                   >
                     <p className = "text-sm sm:text-base">Get a quote for {tier.name}</p>
@@ -248,7 +248,7 @@ const Example:React.FC = () => {
 
               {sections.map((section) => (
                 <table key={section.name} className="w-full">
-                  <caption className="px-4 py-3 text-sm font-medium text-left text-white border-t border-slate-700/50 bg-slate-800 ">
+                  <caption className="px-4 py-3 text-sm font-medium text-left border-t border-slate-400/50 bg-neutral-200/50 ">
                     {section.name}
                   </caption>
                   <thead>
@@ -261,10 +261,10 @@ const Example:React.FC = () => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-700/50">
+                  <tbody className="divide-y divide-slate-400/50">
                     {section.features.map((feature:any) => (
-                      <tr key={feature.name} className="border-t border-slate-700/50">
-                        <th className="px-4 py-5 text-sm font-normal text-left text-white/70" scope="row">
+                      <tr key={feature.name} className="border-t border-slate-400/50">
+                        <th className="px-4 py-5 text-sm font-normal text-left " scope="row">
                           {feature.name}
                         </th>
                         <td className="py-5 pr-4">
@@ -290,7 +290,7 @@ const Example:React.FC = () => {
 
                 <div className = "mt-4">
                   <Button
-                  theme = 'secondary'
+                  theme = 'primary'
                   fullWidth={true}
                   >
                     <p className = "text-sm sm:text-base">Get a quote for {tier.name}</p>
@@ -306,14 +306,14 @@ const Example:React.FC = () => {
             <caption className="sr-only">Pricing plan comparison</caption>
             <thead>
               <tr>
-                <th className="text-sm font-medium text-left text-white " scope="col">
+                <th className="text-sm font-medium text-left" scope="col">
                   <span className="sr-only">Feature by</span>
                   <span>Plans</span>
                 </th>
                 {tiers.map((tier) => (
                   <th
                     key={tier.name}
-                    className="w-1/4 px-4 text-lg font-medium leading-6 text-left text-white "
+                    className="w-1/4 px-4 text-lg font-medium leading-6 text-left "
                     scope="col"
                   >
                     {tier.name}
@@ -321,18 +321,18 @@ const Example:React.FC = () => {
                 ))}
               </tr>
             </thead>
-            <tbody className="border-gray-200 divide-y divide-slate-700/50 ">
+            <tbody className="border-gray-200 divide-y divide-slate-500/50 ">
               <tr className=''>
-                <th className="py-6 text-sm font-medium text-left text-white align-top " scope="row">
+                <th className="py-6 text-sm font-medium text-left align-top " scope="row">
                   Service
                 </th>
                 {tiers.map((tier) => (
                   <td key={tier.name} className="h-full pb-6 align-top">
                     <div className="relative table h-full mx-4 ">
-                      <p className="mt-4 mb-16 text-sm text-white/70">{tier.description}</p>
+                      <p className="mt-4 mb-16 text-sm opacity-70">{tier.description}</p>
                       <div className = "absolute bottom-0 left-0 right-0 mt-4">
                         <Button
-                        theme = 'secondary'
+                        theme = 'primary'
                         fullWidth={true}
                         >
                           <p className = "text-sm sm:text-base">Get a quote</p>
@@ -346,7 +346,7 @@ const Example:React.FC = () => {
                 <Fragment key={section.name}>
                   <tr>
                     <th
-                      className="py-3 pl-6 text-sm font-medium text-left text-white bg-slate-800"
+                      className="py-3 pl-6 text-sm font-medium text-left bg-neutral-200/50"
                       colSpan={4}
                       scope="colgroup"
                     >
@@ -355,19 +355,19 @@ const Example:React.FC = () => {
                   </tr>
                   {section.features.map((feature:any) => (
                     <tr key={feature.name}>
-                      <th className="px-6 py-5 text-sm font-normal text-left text-white/70" scope="row">
+                      <th className="px-6 py-5 text-sm font-normal text-left opacity-70" scope="row">
                         {feature.name}
                       </th>
                       {tiers.map((tier:any) => (
                         <td key={tier.name} className="px-6 py-5">
                           {typeof feature.tiers[tier.name] === 'string' ? (
-                            <span className="block text-sm text-white/70">{feature.tiers[tier.name]}</span>
+                            <span className="block text-sm opacity-70">{feature.tiers[tier.name]}</span>
                           ) : (
                             <>
                               {feature.tiers[tier.name] === true ? (
                                 <CheckIcon className="w-5 h-5 text-indigo-600" aria-hidden="true" />
                               ) : (
-                                <MinusIcon className="w-5 h-5 text-white/70" aria-hidden="true" />
+                                <MinusIcon className="w-5 h-5 opacity-70" aria-hidden="true" />
                               )}
 
                               <span className="sr-only">
@@ -383,14 +383,14 @@ const Example:React.FC = () => {
               ))}
             </tbody>
             <tfoot>
-              <tr className="border-t border-slate-700/50">
+              <tr className="border-t border-slate-500/50">
                 <th className="sr-only" scope="row">
                   Choose your plan
                 </th>
                 {tiers.map((tier) => (
                   <td key={tier.name} className = "px-4 pt-7">
                     <Button
-                    theme = 'secondary'
+                    theme = 'primary'
                     fullWidth={true}
                     >
                       <p>Get a quote</p>
