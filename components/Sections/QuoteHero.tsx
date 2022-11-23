@@ -156,8 +156,8 @@ const SuccessModal:React.FC<iSuccessModalProps> = ({successModal,setSuccessModal
 
 
   return(
-    <div className = {`fixed inset-0 z-10 flex items-center justify-center ${successModal ? 'bg-black/25 backdrop-blur-lg pointer-events-auto': 'bg-black/0 backdrop-blur-0 pointer-events-none'} duration-200 p-4`}>
-      <div className = {`${successModal ? 'opacity-100' : 'opacity-0'} max-w-md p-6 text-center bg-white w-max h-max rounded-3xl duration-200 transition`}>
+    <div className = {`fixed inset-0 z-10 flex items-center justify-center ${successModal ? 'bg-black/25 backdrop-blur-lg pointer-events-auto': 'bg-black/0 backdrop-blur-0 pointer-events-none'} p-4`}>
+      <div className = {`${successModal ? 'opacity-100' : 'opacity-0'} max-w-md p-6 text-center bg-white w-max h-max rounded-3xl`}>
         <h6 className = "text-2xl font-medium sm:text-3xl">To new beginnings</h6>
         <p className = "my-2 text-sm text-black/70 sm:text-base">We hope to be working with you soon, all you have to do is, sit back, relax, and wait for our message. Thank you!</p>
         <div className = "flex items-center justify-center mt-8">
@@ -173,16 +173,6 @@ const SuccessModal:React.FC<iSuccessModalProps> = ({successModal,setSuccessModal
     </div>
   )
 }
-
-interface iInputProps{
-  type:string;
-  label:string;
-  name:string;
-  values?:Array<string>;
-  placeHolder?:string;
-  required?:boolean;
-}
-
 const Input:React.FC<iInputProps> = (props) =>{
   const {type,label,name,values, ...inputProps} = props
   const [packageValue,setPackageValue] = useState('')
@@ -254,3 +244,14 @@ interface iSuccessModalProps{
   successModal:boolean;
   setSuccessModal:(val:boolean) => void;
 }
+
+
+interface iInputProps{
+  type:string;
+  label:string;
+  name:string;
+  values?:Array<string>;
+  placeHolder?:string;
+  required?:boolean;
+}
+
