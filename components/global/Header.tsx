@@ -77,7 +77,7 @@ const MobileNav:React.FC<{openMobileNav:boolean,setOpenMobileNav:(openMobileNav:
     }
   ]
   return(
-    <div className = {`fixed inset-0 z-10 p-4 bg-black/25 backdrop-blur-3xl ${openMobileNav ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition duration-500 ease-in-out md:hidden`}>
+    <div className = {`fixed inset-0 z-20 p-4 bg-black/25 backdrop-blur-3xl ${openMobileNav ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition duration-500 ease-in-out md:hidden`}>
       <div className = 'relative w-full h-full overflow-hidden bg-gray-100 shadow-xl rounded-xl'>
         <div className = "flex items-start justify-between p-4">
           <Link href = "/">

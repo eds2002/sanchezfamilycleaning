@@ -218,7 +218,7 @@ const Input:React.FC<iInputProps> = (props) =>{
               required
             >
               {name === "companySize" && (
-                <option value="" disabled>Select amount of employees</option>
+                <option value="" disabled selected>Select amount of employees</option>
               )}
               {values?.map((value:string)=>(
                 <>
