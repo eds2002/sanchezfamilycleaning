@@ -6,6 +6,7 @@ import Button from '../Elements/Button'
 
 const QuoteHero:React.FC = () => {
   const [successModal,setSuccessModal] = useState(false)
+  const [hasSubmitted,setHasSubmitted] = useState(false)
 
   const inputs = [
     {
@@ -85,6 +86,7 @@ const QuoteHero:React.FC = () => {
         },
         body:JSON.stringify(userInformation),
       }).then((data)=> data.json().catch((error)=>error))
+      setHasSubmitted(true)
       target.firstName.value = ""
       target.lastName.value = ""
       target.workEmail.value = ""
@@ -123,7 +125,12 @@ const QuoteHero:React.FC = () => {
               onSubmit={(e:any)=>handleSubmit(e)}
             >
               {inputs.map((input)=>(
-                <Input {...input} key = {input.name}/>
+                <Input 
+                  {...input} 
+                  key = {input.name}
+                  hasSubmitted={hasSubmitted}
+                  setHasSubmitted={setHasSubmitted}
+                />
               ))}
               <div className = "flex items-center justify-end">
                 <Button
@@ -174,7 +181,7 @@ const SuccessModal:React.FC<iSuccessModalProps> = ({successModal,setSuccessModal
   )
 }
 const Input:React.FC<iInputProps> = (props) =>{
-  const {type,label,name,values, ...inputProps} = props
+  const {type,label,name,values,hasSubmitted,setHasSubmitted, ...inputProps} = props
   const [packageValue,setPackageValue] = useState('')
   const [focused,setFocused] = useState(false)
   const router = useRouter()
@@ -185,6 +192,15 @@ const Input:React.FC<iInputProps> = (props) =>{
     }
   },[router.query])
 
+  useEffect(()=>{
+    // TODO, If has submitted is false, return
+    if(!hasSubmitted) return
+    
+    // TODO, set focused to false, & has submitted to false, resetting ui error displays.
+    setFocused(false)
+    setHasSubmitted(false)
+  },[hasSubmitted])
+
   return(
     <>
       {type === "dropdown" ? 
@@ -192,14 +208,18 @@ const Input:React.FC<iInputProps> = (props) =>{
           <p className = "w-full max-w-xs sm:max-w-[125px] font-medium flex flex-col items-start">
             {label}
             {name === "companySize" && (
-              <span className = "mt-2 text-xs font-light opacity-70">How many employees does your business have?</span>
+              <span className = "mt-1 text-xs font-light opacity-70">How many employees does your business have?</span>
             )}
           </p>
           <div className = "relative flex items-center w-full">
             <select 
               className = "w-full px-3 py-2 mb-auto rounded-md outline-none appearance-none select-none bg-neutral-200/50 h-max"
               name = {name}
+              required
             >
+              {name === "companySize" && (
+                <option value="" disabled>Select amount of employees</option>
+              )}
               {values?.map((value:string)=>(
                 <>
                   <option  selected={value.toLowerCase() === packageValue ? true : false}>{value}</option>
@@ -214,7 +234,7 @@ const Input:React.FC<iInputProps> = (props) =>{
           <p className = "w-full max-w-[125px] font-medium">{label}</p>
           <input 
             name = {name}
-            className = {`w-full px-3 py-2 rounded-md outline-none select-none bg-neutral-200/50 ${focused ? ('invalid:bg-red-200/50') : ('')}`}
+            className = {`w-full px-3 py-2 rounded-md outline-none select-none bg-neutral-200/50 ${focused ? ('invalid:bg-red-200/50') : ('invalid:bg-neutral-200/50')}`}
             type = {type}
             {...inputProps}
             onBlur={()=>setFocused(true)}
@@ -253,5 +273,7 @@ interface iInputProps{
   values?:Array<string>;
   placeHolder?:string;
   required?:boolean;
+  hasSubmitted:boolean;
+  setHasSubmitted:(val:boolean)=>void;
 }
 
