@@ -17,6 +17,7 @@ export {default as AboutUsHero} from './Sections/AboutUsHero'
 export {default as Testimonials} from './Sections/Testimonials'
 export {default as OurStory} from './Sections/OurStory'
 export {default as GetStarted} from './Sections/GetStarted'
+export {default as ContactSection} from './Sections/ContactSection'
 
 // Elements Folder
 export {default as Button} from './Elements/Button'

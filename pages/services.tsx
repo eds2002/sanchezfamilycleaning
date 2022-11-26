@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import React from 'react'
-import { CompareServices, Footer, Header, PricingHero } from "../components";
+import { CompareServices, Footer, Header } from "../components";
 
 const Services:NextPage = () => {
   return (

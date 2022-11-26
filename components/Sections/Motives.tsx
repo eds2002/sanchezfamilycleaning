@@ -1,6 +1,5 @@
 import React from 'react'
 import { ClockIcon, CheckBadgeIcon,DocumentIcon,WrenchIcon,AcademicCapIcon} from '@heroicons/react/24/solid'
-import {Button} from '../'
 
 const Motives:React.FC = () => {
 

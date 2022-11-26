@@ -1,5 +1,5 @@
 import React from 'react'
-import { ClockIcon, MegaphoneIcon, CheckBadgeIcon,BriefcaseIcon, ChevronRightIcon} from '@heroicons/react/24/solid'
+import { MegaphoneIcon, CheckBadgeIcon,BriefcaseIcon, ChevronRightIcon} from '@heroicons/react/24/solid'
 import {Button} from '../'
 import Link from 'next/link'
 

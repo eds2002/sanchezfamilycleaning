@@ -26,7 +26,7 @@ const Hero:React.FC = () => {
               text = ''
               theme = 'outline'
             >
-              <p className = "text-sm w-max sm:text-base">Call Us</p>
+              <a href = "tel:+1 908-336-2757" className = "text-sm w-max sm:text-base">Call Us</a>
             </Button>
           </div>
         </div>

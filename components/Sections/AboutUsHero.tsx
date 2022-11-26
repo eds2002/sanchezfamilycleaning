@@ -4,7 +4,7 @@ const AboutUsHero = () => {
   return (
     <section className = "relative z-10 py-14 sm:py-24 lg:py-40 bg-neutral-100">
       <div className = "flex flex-col max-w-5xl px-4 mx-auto text-center">
-        <span className = "block text-lg font-medium text-indigo-600">Sanchez Family</span>
+        <span className = "z-10 block text-lg font-medium text-indigo-600">Sanchez Family</span>
         <h1 className = "z-10 mt-1 text-5xl font-semibold text-slate-900 md:text-6xl">
           Providing professional janitorial services for the last <span className = "underline">20 years</span>.
         </h1>

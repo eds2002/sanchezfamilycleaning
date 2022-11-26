@@ -6,9 +6,18 @@ import Link from 'next/link'
 const Header:React.FC = () => {
   const [openMobileNav,setOpenMobileNav] = useState(false)
   const navItems = [
-    'About Us',
-    'Services',
-    'Contact Us',
+    {
+      title:'Services',
+      handle:"services"
+    },
+    {
+      title:'About Us',
+      handle:"about-us"
+    },
+    {
+      title:"Contact Us",
+      handle:"contact-us"
+    }
   ]
 
 
@@ -28,10 +37,12 @@ const Header:React.FC = () => {
             <h1 className = "text-3xl font-semibold transition duration-200 hover:opacity-70">S.F.C</h1>
           </Link>
           <div className = "items-center hidden list-none gap-x-3 md:flex">
-            {navItems.map((nav:string)=>(
-              <li className = "px-2 py-1 text-sm rounded-md cursor-pointer hover:bg-slate-100" key = {nav}>
-                {nav}
-              </li>
+            {navItems.map((nav)=>(
+              <Link href = {nav.handle} key = {nav.title}>
+                <li className = "px-2 py-1 text-sm rounded-md cursor-pointer hover:bg-slate-100">
+                  {nav.title}
+                </li>
+              </Link>
             ))}
           </div>
           <div className = "hidden md:block">
