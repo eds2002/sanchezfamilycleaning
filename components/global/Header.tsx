@@ -38,7 +38,7 @@ const Header:React.FC = () => {
           </Link>
           <ul className = "items-center hidden list-none gap-x-3 md:flex">
             {navItems.map((nav)=>(
-              <li className = "px-2 py-1 text-sm rounded-md cursor-pointer hover:bg-slate-100">
+              <li className = "px-2 py-1 text-sm rounded-md cursor-pointer hover:bg-slate-100" key = {nav.title}>
                 <Link href = {nav.handle} key = {nav.title}>
                   {nav.title}
                 </Link>
