@@ -5,7 +5,7 @@ const Footer:React.FC = () => {
   return (
     <section className = "py-10 bg-gray-100">
       <div className = "px-4 mx-auto text-center max-w-7xl">
-        <h5 className = "text-3xl font-semibold">S.F.C</h5>
+        <p className = "text-3xl font-semibold">S.F.C</p>
         <div className='flex items-center justify-center mt-4 text-sm gap-x-3'>
           <MapPinIcon className = "w-4 h-4"/>
           <p>Morris County, NJ</p>

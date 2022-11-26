@@ -90,7 +90,7 @@ const ServiceCard:React.FC<iServiceCardProps> = ({service,index}) =>{
       className = {`shadow-lg shadow-gray-900/5 w-full md:max-w-sm p-12 h-max  rounded-3xl ${index === 2 ? 'bg-slate-900 text-white' : 'bg-white'}`}
       key = {service.title}
     >
-      <h5 className = "text-2xl font-medium">{service.title}</h5>
+      <p className = "text-2xl font-medium">{service.title}</p>
       <p className = "text-sm sm:text-base">{service.desc}</p>
       <div className = "w-full mt-4 mb-4">
         <Link href = {service.handle}>
@@ -102,7 +102,7 @@ const ServiceCard:React.FC<iServiceCardProps> = ({service,index}) =>{
           </Button>
         </Link>
       </div>
-      <div className = "divide-y divide-gray-600 divide-opacity-40">
+      <ul className = "list-none divide-y divide-gray-600 divide-opacity-40">
         {service.includes.map((feature)=>(
           <li className = "flex items-center py-2 text-sm gap-x-3" key = {feature}>
             <CheckBadgeIcon className = {`
@@ -114,7 +114,7 @@ const ServiceCard:React.FC<iServiceCardProps> = ({service,index}) =>{
             `}>{feature}</p>
           </li>
         ))}
-      </div>
+      </ul>
     </div>
   )
 }

@@ -6,12 +6,14 @@ interface Props{
   children?:React.ReactNode;
   theme:string;
   fullWidth?:boolean;
+  ariaLabel?:string;
 }
 
-const Button:React.FC<Props> = ({text,onClick,children,theme,fullWidth}) => {
+const Button:React.FC<Props> = ({text,onClick,children,theme,fullWidth,ariaLabel}) => {
   return (
     <button
       onClick={onClick}
+      aria-label={ariaLabel}
       className=
       {`
         ${theme === "primary" && ('bg-slate-900 rounded-full text-white px-4 py-2 hover:bg-slate-700 ease-in-out duration-200')}

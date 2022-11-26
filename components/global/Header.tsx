@@ -36,19 +36,20 @@ const Header:React.FC = () => {
           <Link href = "/">
             <h1 className = "text-3xl font-semibold transition duration-200 hover:opacity-70">S.F.C</h1>
           </Link>
-          <div className = "items-center hidden list-none gap-x-3 md:flex">
+          <ul className = "items-center hidden list-none gap-x-3 md:flex">
             {navItems.map((nav)=>(
-              <Link href = {nav.handle} key = {nav.title}>
-                <li className = "px-2 py-1 text-sm rounded-md cursor-pointer hover:bg-slate-100">
+              <li className = "px-2 py-1 text-sm rounded-md cursor-pointer hover:bg-slate-100">
+                <Link href = {nav.handle} key = {nav.title}>
                   {nav.title}
-                </li>
-              </Link>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
           <div className = "hidden md:block">
             <Link href = "/request-a-quote">
               <Button
               theme = 'primary'
+              ariaLabel='menu'
               >
                 <p className = "text-sm">Request a quote</p>
               </Button>
@@ -58,6 +59,7 @@ const Header:React.FC = () => {
             <Button
             theme = 'primary'
             onClick = {()=>setOpenMobileNav(!openMobileNav)}
+            ariaLabel="menu"
             >
               <Bars3Icon className = "w-5 h-5"/>
             </Button>
@@ -100,10 +102,10 @@ const MobileNav:React.FC<{openMobileNav:boolean,setOpenMobileNav:(openMobileNav:
           >
             <XMarkIcon className = "w-4 h-4"/></div>
         </div>
-        <div className = "list-none divide-y mt-7 divide-black/10">
+        <ul className = "list-none divide-y mt-7 divide-black/10">
           {mobileNavItems.map((navItem:{title?:string;subLinks?:Array<string>;handle:string;})=>(
-            <Link href = {navItem.handle} key = {navItem.title}>
-              <li className = {navItem?.subLinks && ('bg-neutral-200/30')} key = {navItem.title}>
+            <li className = {navItem?.subLinks && ('bg-neutral-200/30')} key = {navItem.title}>
+              <Link href = {navItem.handle} key = {navItem.title}>
                 <p className = {`p-4 text-2xl font-medium  ${navItem?.subLinks ? ('border-b cursor-default') : ('hover:opacity-70 cursor-pointer')}`}>{navItem?.title}</p>
                 <ul className = "divide-y divide-black/5s">  
                   {navItem?.subLinks?.map((sub)=>(
@@ -113,14 +115,15 @@ const MobileNav:React.FC<{openMobileNav:boolean,setOpenMobileNav:(openMobileNav:
                     </li>
                   ))}
                 </ul>
-              </li>
-            </Link>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
         <div className='absolute bottom-0 left-0 right-0 flex items-center justify-center py-6 bg-neutral-200/50 rounded-tl-xl rounded-tr-xl'>
           <Link href = "/request-a-quote">
             <Button
             theme = 'primary'
+            ariaLabel='request a quote'
             >
               <p className = "text-sm">Request a quote</p>
             </Button>

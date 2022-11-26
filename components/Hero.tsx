@@ -18,6 +18,7 @@ const Hero:React.FC = () => {
               <Button
                 text = ''
                 theme = 'primary'
+                ariaLabel = "request a quote"
               >
                 <p className = "text-sm w-max sm:text-base">Request a quote</p>
               </Button>

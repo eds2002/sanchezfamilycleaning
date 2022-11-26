@@ -43,10 +43,10 @@ const Motives:React.FC = () => {
             {details.map((detail)=>(
               <div className = "relative flex flex-col items-start justify-start h-full pl-4 border-l-[0.5px] border-white/20" key = {detail.title}>
                   <detail.icon className = "w-12 h-12 text-cyan-400"/>
-                <h4 className = "mt-4 text-sm font-medium text-white sm:text-base">
+                <p className = "mt-4 text-sm font-medium text-white sm:text-base">
                   {detail.title}
                   <span className = "absolute -left-0.5 w-0.5 h-5 bg-cyan-400"/>
-                </h4>
+                </p>
                 <p className = "mt-2 text-sm text-left text-white/70 sm:text-base">{detail.paragraph}</p>
               </div>  
             ))}
