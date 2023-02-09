@@ -13,6 +13,10 @@ const Header: React.FC = () => {
   const [currentTab, setCurrentTab] = useState<string | null>(null);
   const navItems = [
     {
+      title: "Home",
+      handle: "/",
+    },
+    {
       title: "Services",
       handle: "services",
     },
@@ -34,6 +38,12 @@ const Header: React.FC = () => {
     }
   }, [openMobileNav]);
 
+  const handleMouseLeave = async (entered?: boolean) => {
+    if (entered) return;
+    await delay(1000);
+    setCurrentTab(null);
+  };
+
   return (
     <>
       <section className="py-6">
@@ -45,7 +55,8 @@ const Header: React.FC = () => {
           </Link>
           <ul
             className="items-center hidden list-none md:flex"
-            onMouseLeave={() => setCurrentTab(null)}
+            onMouseLeave={() => handleMouseLeave()}
+            onMouseEnter={() => handleMouseLeave(true)}
           >
             {navItems.map((nav) => (
               <li
@@ -103,6 +114,10 @@ const MobileNav: React.FC<{
   setOpenMobileNav: (openMobileNav: boolean) => void;
 }> = ({ openMobileNav, setOpenMobileNav }) => {
   const mobileNavItems = [
+    {
+      title: "Home",
+      handle: "/",
+    },
     {
       title: "Services",
       handle: "services",
@@ -186,5 +201,9 @@ const MobileNav: React.FC<{
     </div>
   );
 };
+
+function delay(t: any) {
+  return new Promise((resolve) => setTimeout(resolve, t));
+}
 
 export default Header;
