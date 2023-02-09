@@ -6,10 +6,11 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/solid";
 import Link from "next/link";
-import motion from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Header: React.FC = () => {
   const [openMobileNav, setOpenMobileNav] = useState(false);
+  const [currentTab, setCurrentTab] = useState<string | null>(null);
   const navItems = [
     {
       title: "Services",
@@ -42,16 +43,32 @@ const Header: React.FC = () => {
               S.F.C
             </h1>
           </Link>
-          <ul className="items-center hidden list-none bg-red-500 gap-x-3 md:flex group">
+          <ul
+            className="items-center hidden list-none md:flex"
+            onMouseLeave={() => setCurrentTab(null)}
+          >
             {navItems.map((nav) => (
               <li
-                className="relative px-2 py-1 text-sm rounded-md cursor-pointer hover:bg-slate-100"
+                className="relative px-2 py-1 text-sm rounded-md cursor-pointer group"
                 key={nav.title}
+                onMouseOver={() => setCurrentTab(nav.title)}
               >
-                <Link href={nav.handle} key={nav.title}>
+                <Link href={nav.handle} key={nav.title} className="z-10">
                   {nav.title}
                 </Link>
-                <motion.div />
+                <AnimatePresence>
+                  {currentTab === nav.title && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      key={`active-${nav.title}`}
+                      layoutId="tabSelector"
+                      className="absolute inset-0 bg-slate-200 rounded-md z-[-1]"
+                    />
+                  )}
+                </AnimatePresence>
               </li>
             ))}
           </ul>
