@@ -8,7 +8,7 @@ import {
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
-const Header: React.FC = () => {
+const Header = ({ logoColor }: { logoColor?: string }) => {
   const [openMobileNav, setOpenMobileNav] = useState(false);
   const [currentTab, setCurrentTab] = useState<string | null>(null);
   const navItems = [
@@ -38,29 +38,21 @@ const Header: React.FC = () => {
     }
   }, [openMobileNav]);
 
-  const handleMouseLeave = async (entered?: boolean) => {
-    if (entered) return;
-    await delay(1000);
-    setCurrentTab(null);
-  };
-
   return (
     <>
-      <section className="py-6">
+      <section className="py-4">
         <div className="flex items-center justify-between px-4 mx-auto gap-x-6 max-w-7xl">
           <Link href="/">
-            <h1 className="text-3xl font-semibold transition duration-200 hover:opacity-70">
+            <h1
+              className={`text-3xl font-semibold transition duration-200 hover:opacity-70 ${logoColor}`}
+            >
               S.F.C
             </h1>
           </Link>
-          <ul
-            className="items-center hidden list-none md:flex"
-            onMouseLeave={() => handleMouseLeave()}
-            onMouseEnter={() => handleMouseLeave(true)}
-          >
+          <ul className="items-center hidden list-none md:flex">
             {navItems.map((nav) => (
               <li
-                className="relative px-2 py-1 text-sm rounded-md cursor-pointer group"
+                className={`relative px-2 py-1 text-sm rounded-md cursor-pointer group ${logoColor}`}
                 key={nav.title}
                 onMouseOver={() => setCurrentTab(nav.title)}
               >
@@ -76,7 +68,7 @@ const Header: React.FC = () => {
                       transition={{ duration: 0.3 }}
                       key={`active-${nav.title}`}
                       layoutId="tabSelector"
-                      className="absolute inset-0 bg-slate-200 rounded-md z-[-1]"
+                      className="absolute inset-0 bg-slate-200/25 rounded-md z-[-1]"
                     />
                   )}
                 </AnimatePresence>
@@ -85,14 +77,14 @@ const Header: React.FC = () => {
           </ul>
           <div className="hidden md:block">
             <Link href="/request-a-quote">
-              <Button theme="primary" ariaLabel="menu">
+              <Button theme="tertiary" ariaLabel="menu">
                 <p className="text-sm">Request a quote</p>
               </Button>
             </Link>
           </div>
           <div className="block cursor-pointer md:hidden">
             <Button
-              theme="primary"
+              theme="tertiary"
               onClick={() => setOpenMobileNav(!openMobileNav)}
               ariaLabel="menu"
             >
@@ -133,7 +125,7 @@ const MobileNav: React.FC<{
   ];
   return (
     <div
-      className={`fixed inset-0 z-20 p-4 bg-black/25 backdrop-blur-3xl ${
+      className={`fixed inset-0 z-30 p-4 bg-black/25 backdrop-blur-3xl h-screen ${
         openMobileNav
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"
