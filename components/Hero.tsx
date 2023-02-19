@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
     "Reduce clutter & increase productivity: Sanchez Family Cleaning is a well respected and trusted company dedicated to keeping your offices clean.";
   return (
     <section className="relative pt-48 pb-32 md:pb-48 md:pt-56" ref={ref}>
-      <div className="absolute top-0 left-0 right-0 z-20 backdrop-blur-xl">
+      <div className="absolute top-0 left-0 right-0 z-20 backdrop-blur-sm">
         <Header logoColor="text-white" />
       </div>
       <div className="relative z-10 flex flex-col items-center justify-start h-full px-4 mx-auto text-white max-w-7xl">
