@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   const { scrollYProgress } = useScroll();
   let y = useTransform(scrollYProgress, [0.8, 1], ["0%", "250%"]);
   return (
-    <section className="relative py-10 bg-gray-100 ">
+    <section className="relative py-10 bg-gray-100 z-[30]">
       <div className="relative z-20 px-4 mx-auto text-center max-w-7xl">
         <p className="text-3xl font-semibold">S.F.C</p>
         <div className="flex items-center justify-center mt-4 text-sm gap-x-3">

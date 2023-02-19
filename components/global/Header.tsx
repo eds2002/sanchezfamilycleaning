@@ -40,7 +40,7 @@ const Header = ({ logoColor }: { logoColor?: string }) => {
 
   return (
     <>
-      <section className="py-4">
+      <section className="relative z-20 py-4">
         <div className="flex items-center justify-between px-4 mx-auto gap-x-6 max-w-7xl">
           <Link href="/">
             <h1

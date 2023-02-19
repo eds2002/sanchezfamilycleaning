@@ -34,7 +34,7 @@ const AboutUs: React.FC = () => {
       <GridLines />
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col items-start">
-          <div className="flex flex-col items-start px-4">
+          <div className="flex flex-col items-start px-8">
             <span className="text-lg font-medium text-cyan-400 ">About us</span>
             <h2 className="text-3xl font-medium text-center text-white">
               Our core values
@@ -59,7 +59,7 @@ const AboutUs: React.FC = () => {
           <div className="grid w-full grid-cols-1 px-4 md:grid-cols-2 lg:grid-cols-3 gap-y-10">
             {details.map((detail) => (
               <div
-                className="relative flex flex-col items-start justify-start w-full h-full pl-2"
+                className="relative flex flex-col items-start justify-start w-full h-full pl-4"
                 key={detail.title}
               >
                 <detail.icon className="w-12 h-12 text-cyan-400" />
@@ -83,9 +83,9 @@ function GridLines() {
   return (
     <div className="absolute inset-0 pointer-events-none">
       <div className="grid w-full h-full grid-cols-1 px-4 mx-auto md:grid-cols-2 lg:grid-cols-3 max-w-7xl">
-        <div className="border-l border-r border-dotted border-white/5" />
-        <div className="border-l border-r border-dotted border-white/5" />
-        <div className="border-l border-r border-dotted border-white/5 md:hidden" />
+        <div className="border-dotted border-x border-white/5" />
+        <div className="border-dotted border-x border-white/5" />
+        <div className="hidden border-dotted border-x border-white/5 lg:block" />
       </div>
     </div>
   );
