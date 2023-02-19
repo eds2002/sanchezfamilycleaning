@@ -8,6 +8,7 @@ import { TbConfetti } from "react-icons/tb";
 const QuoteHero: React.FC = () => {
   const [successModal, setSuccessModal] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const inputs = [
     {
@@ -47,6 +48,8 @@ const QuoteHero: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<CustomForm>) => {
     e.preventDefault();
+    setLoading(true);
+    if (loading) return;
     const target = e.currentTarget.elements;
 
     const userInformation = {
@@ -80,6 +83,7 @@ const QuoteHero: React.FC = () => {
         body: JSON.stringify(userInformation),
       }).then((data) => data.json().catch((error) => error));
       setHasSubmitted(true);
+      setLoading(false);
       target.firstName.value = "";
       target.lastName.value = "";
       target.workEmail.value = "";
@@ -89,7 +93,7 @@ const QuoteHero: React.FC = () => {
   return (
     <>
       <section className="py-16 lg:py-48">
-        <div className="flex flex-col gap-6 px-4 pb-24 mx-auto max-w-7xl lg:flex-row md:pb-0">
+        <div className="flex flex-col gap-6 px-4 pb-24 mx-auto max-w-7xl lg:flex-row lg:pb-0">
           <div className="flex items-center justify-start flex-1 sm:justify-center ">
             <div className="p-4 font-medium text-slate-900">
               <h1 className="max-w-sm text-5xl font-semibold sm:max-w-xl">
@@ -128,7 +132,7 @@ const QuoteHero: React.FC = () => {
                 />
               ))}
               <div className="flex items-center justify-end">
-                <Button theme="tertiary">
+                <Button theme="tertiary" isLoading={loading}>
                   <p className="text-sm">Get my quote</p>
                 </Button>
               </div>

@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import React from "react";
+import { VscLoading } from "react-icons/vsc";
 
 type themes =
   | "primary"
@@ -29,6 +30,7 @@ interface Props {
   initial?: any;
   animate?: boolean | VariantLabels | AnimationControls | TargetAndTransition;
   transition?: Transition;
+  isLoading?: boolean;
 }
 
 const Button: React.FC<Props> = ({
@@ -43,6 +45,7 @@ const Button: React.FC<Props> = ({
   initial,
   animate,
   transition,
+  isLoading = false,
 }) => {
   return (
     <>
@@ -181,13 +184,19 @@ const Button: React.FC<Props> = ({
               }
               ${
                 theme === "outline" &&
-                "bg-transparent border border-slate-200 rounded-full text-black px-4 py-2 hover:border-slate-500 ease-in-out duration-200"
+                "bg-transparent border border-slate-200 rounded-full text-black px-4 py-2 hover:border-slate-500 ease-in-out duration-200 "
               }
               ${fullWidth ? "w-full" : "w-max"}
-              rounded-full relative overflow-hidden group 
+              rounded-full relative overflow-hidden group transition-all
             `}
             >
-              {children}
+              {isLoading ? (
+                <>
+                  <VscLoading className={"animate-spin text-xl"} />
+                </>
+              ) : (
+                <>{children}</>
+              )}
             </button>
           )}
         </>

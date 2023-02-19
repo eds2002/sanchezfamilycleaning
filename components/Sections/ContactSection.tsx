@@ -22,9 +22,12 @@ const inputs = [
 export default function ContactSection() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<CustomForm>) => {
     e.preventDefault();
+    if (loading) return;
+    setLoading(true);
     const target = e.currentTarget.elements;
     const email = target.workEmail.value;
     const message = target.message.value;
@@ -46,6 +49,7 @@ export default function ContactSection() {
       setSuccessModal(true);
       target.workEmail.value = "";
       target.message.value = "";
+      setLoading(false);
     }
   };
 
@@ -80,7 +84,7 @@ export default function ContactSection() {
                   />
                 ))}
                 <div className="flex items-center justify-end">
-                  <Button theme="tertiary">
+                  <Button theme="tertiary" isLoading={loading}>
                     <p className="text-sm">Send my message</p>
                   </Button>
                 </div>
