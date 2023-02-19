@@ -80,10 +80,7 @@ export default function ContactSection() {
                   />
                 ))}
                 <div className="flex items-center justify-end">
-                  <Button
-                    theme="tertiary"
-                    onClick={() => setSuccessModal(true)}
-                  >
+                  <Button theme="tertiary">
                     <p className="text-sm">Send my message</p>
                   </Button>
                 </div>
