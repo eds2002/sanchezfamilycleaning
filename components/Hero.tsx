@@ -1,39 +1,125 @@
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { Button } from "./";
+import React, { useRef } from "react";
+import { Button, Header } from "./";
+import heroimg from "../public/heroimage.jpg";
 
 const Hero: React.FC = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  let y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const title = ["Sanchez", "Family", "Cleaning"];
+  const paragraph =
+    "Reduce clutter & increase productivity: Sanchez Family Cleaning is a well respected and trusted company dedicated to keeping your offices clean.";
   return (
-    <section className="py-32 md:py-48">
-      <div className="flex items-center justify-start h-full px-4 mx-auto max-w-7xl">
-        <div className="flex flex-col items-start">
-          <h1 className="max-w-3xl text-5xl font-semibold lg:text-7xl">
-            Professional Commercial Cleaning Based in New Jersey
-          </h1>
-          <p className="max-w-sm mt-2 text-base lg:text-lg">
-            Reduce clutter & increase productivity: Sanchez Family Cleaning is a
-            well respected and trusted company dedicated to keeping your offices
-            clean.
-          </p>
-          <div className="flex w-max gap-x-3 mt-7">
-            <Link href="/request-a-quote">
-              <Button text="" theme="primary" ariaLabel="request a quote">
-                <p className="text-sm w-max sm:text-base">Request a quote</p>
+    <section className="relative pt-48 pb-32 md:pb-48 md:pt-56" ref={ref}>
+      <div className="absolute top-0 left-0 right-0 z-20 backdrop-blur-sm">
+        <Header logoColor="text-white" />
+      </div>
+      <div className="relative z-10 flex flex-col items-center justify-start h-full px-4 mx-auto text-white max-w-7xl">
+        <div className="flex flex-col items-center justify-center mx-auto">
+          <AnimatePresence>
+            <div className="flex flex-wrap items-center justify-center text-5xl font-semibold text-center lg:text-7xl">
+              {title.map((word, index) => (
+                <p key={word} className="p-1 pr-4 overflow-y-hidden">
+                  <motion.span
+                    initial={{ y: "100%" }}
+                    animate={{ y: 0 }}
+                    transition={{
+                      ease: [0.45, 0, 0, 1],
+                      duration: 1,
+                      delay: index * 0.1,
+                    }}
+                    className="inline-block "
+                  >
+                    {word}
+                  </motion.span>
+                </p>
+              ))}
+            </div>
+            <div className="flex flex-wrap items-center justify-center max-w-xl mt-2 text-base text-center lg:text-lg opacity-80">
+              {paragraph.split(" ").map((word, index) => (
+                <p key={word} className="p-1 pr-[1px] overflow-y-hidden">
+                  <motion.span
+                    initial={{ y: "100%" }}
+                    animate={{ y: 0 }}
+                    transition={{
+                      ease: [0.45, 0, 0, 1],
+                      duration: 1,
+                      delay: index * 0.035,
+                    }}
+                    className="inline-block "
+                  >
+                    {word}
+                  </motion.span>
+                </p>
+              ))}
+            </div>
+            <div className="flex w-max gap-x-3 mt-7">
+              <Button
+                key="requestAQuoteBtn"
+                text=""
+                theme="tertiary"
+                ariaLabel="request a quote"
+                href="/request-a-quote"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{
+                  duration: 0.4,
+                  ease: [0.45, 0, 0, 1],
+                }}
+              >
+                <p className="py-1 text-sm w-max sm:text-base">
+                  Request a quote
+                </p>
               </Button>
-            </Link>
-            <Button text="" theme="outline">
-              <a
+              <Button
+                key="callUsBtn"
+                text=""
+                theme="none"
                 href="tel:+1 908-336-2757"
-                className="text-sm w-max sm:text-base"
+                className="flex items-center justify-center px-4 py-2 text-white duration-200 ease-in-out bg-transparent border rounded-full border-slate-200 hover:border-slate-500"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{
+                  duration: 1,
+                  ease: [0.45, 0, 0, 1],
+                }}
               >
                 Call Us
-              </a>
-            </Button>
-          </div>
+              </Button>
+            </div>
+          </AnimatePresence>
         </div>
       </div>
+      <HeroImage />
     </section>
   );
 };
+
+function HeroImage() {
+  return (
+    <div className="absolute inset-0">
+      <div className="absolute inset-0 z-[5] bg-black/50" />
+      <Image
+        priority
+        placeholder="blur"
+        src={heroimg}
+        fill
+        className="object-cover"
+        alt="image of janitor"
+      />
+    </div>
+  );
+}
 
 export default Hero;

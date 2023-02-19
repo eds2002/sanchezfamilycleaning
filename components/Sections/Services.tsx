@@ -2,8 +2,6 @@ import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import { Button } from "../";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import BubblesSvg from "../../assets/sparklesbg.svg";
 
 const Services: React.FC = () => {
   const servicesArr = [
@@ -58,9 +56,12 @@ const Services: React.FC = () => {
           </h2>
           <p className="max-w-md mt-2 text-sm text-black lg:text-lg sm:text-base">
             Explore our services and request for a quote. You can also{" "}
-            <span className="text-indigo-600 cursor-pointer hover:text-indigo-700">
+            <Link
+              href="/contact-us"
+              className="text-indigo-600 underline cursor-pointer hover:text-indigo-700"
+            >
               contact us
-            </span>{" "}
+            </Link>{" "}
             if you need more information.
           </p>
         </div>
