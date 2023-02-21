@@ -76,7 +76,7 @@ function Word({ val, index }: { val: string; index: number }) {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0 }}
-            className="absolute z-20 flex flex-col items-start justify-center p-4 origin-top shadow-xl bg-slate-700 rounded-xl min-w-[200px]"
+            className="absolute z-40 flex flex-col items-start justify-center p-4 origin-top shadow-xl bg-slate-700 rounded-xl min-w-[200px]"
           >
             <p className="text-xs opacity-70">Trusted Client</p>
             <h6 className="text-base font-semibold text-left ">

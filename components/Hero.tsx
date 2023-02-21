@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
   const paragraph =
     "Reduce clutter & increase productivity: Sanchez Family Cleaning is a well respected and trusted company dedicated to keeping your offices clean.";
   return (
-    <section className="relative pt-48 pb-32 md:pb-48 md:pt-56" ref={ref}>
+    <section className="relative z-10 pt-48 pb-32 md:pb-48 md:pt-56" ref={ref}>
       <div className="absolute top-0 left-0 right-0 z-20 backdrop-blur-sm">
         <Header logoColor="text-white" />
       </div>

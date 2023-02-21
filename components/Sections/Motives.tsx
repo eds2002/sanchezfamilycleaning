@@ -36,7 +36,6 @@ const Motives: React.FC = () => {
 
   return (
     <section className="relative py-24 bg-slate-900">
-      <GridLines />
       <div className="px-4 mx-auto max-w-7xl">
         <div className="flex flex-col items-start">
           <div>
@@ -68,15 +67,5 @@ const Motives: React.FC = () => {
     </section>
   );
 };
-function GridLines() {
-  return (
-    <div className="absolute inset-0 pointer-events-none">
-      <div className="grid w-full h-full grid-cols-1 px-4 mx-auto md:grid-cols-2 lg:grid-cols-2 max-w-7xl">
-        <div className="border-l border-r border-dotted border-white/5" />
-        <div className="border-l border-r border-dotted border-white/5" />
-      </div>
-    </div>
-  );
-}
 
 export default Motives;
