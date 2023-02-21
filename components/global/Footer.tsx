@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
           <p>English and Spanish</p>
         </div>
         <p className="mt-10 text-sm text-neutral-400">
-          © 2022 Sanchez Family Cleaning
+          © {new Date().getFullYear()} Sanchez Family Cleaning
         </p>
       </div>
       <CircleTop y={y} />
