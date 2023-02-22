@@ -1,31 +1,37 @@
 import React from "react";
-import {
-  MegaphoneIcon,
-  CheckBadgeIcon,
-  BriefcaseIcon,
-  ChevronRightIcon,
-} from "@heroicons/react/24/solid";
 import { Button } from "../";
-import { BiChevronRight } from "react-icons/bi";
+import {
+  BiTimeFive,
+  BiBriefcaseAlt,
+  BiBadgeCheck,
+  BiShield,
+} from "react-icons/bi";
+import { motion } from "framer-motion";
 
 const AboutUs: React.FC = () => {
   const details = [
     {
-      icon: MegaphoneIcon,
+      icon: BiTimeFive,
       title: "Always on time",
       paragraph:
-        "Punctuality is important to us, we are always on time to get the job done.",
+        "Punctuality is important to us; we are always on time to get the job done.",
     },
     {
-      icon: CheckBadgeIcon,
-      title: "High Quality Disinfectants",
+      icon: BiBadgeCheck,
+      title: "High quality products",
       paragraph: "We only use the toughest products to kill 99% of bacteria.",
     },
     {
-      icon: BriefcaseIcon,
+      icon: BiBriefcaseAlt,
       title: "Always prepared",
       paragraph:
-        "We always wear our gloves and masks, this keeps you safe and our employees safe.",
+        "We carry the necessary tools to get the job done efficiently.",
+    },
+    {
+      icon: BiShield,
+      title: "Safety is #1",
+      paragraph:
+        "Safety is our main priority for both your employees and our employees.",
     },
   ];
 
@@ -39,7 +45,7 @@ const AboutUs: React.FC = () => {
               Our core values
             </h2>
             <p className="max-w-md mt-2 text-sm lg:text-lg sm:text-base text-white/70">
-              We make your place cleaner. Our products and service makes it
+              We make your place cleaner. Our products and services make it
               easier for businesses to manage their cleaning. So when people
               come together to collaborate and work, the shared environment is
               more hygienic and healthy.
@@ -55,15 +61,20 @@ const AboutUs: React.FC = () => {
             </div>
           </div>
           <div className="grid w-full grid-cols-1 px-4 md:grid-cols-2 lg:grid-cols-4 gap-y-10">
-            {details.map((detail) => (
+            {details.map((detail, index: number) => (
               <div
-                className="relative flex flex-col items-start justify-start w-full h-full pl-4"
+                className="relative flex flex-col items-start justify-start w-full h-full px-4"
                 key={detail.title}
               >
                 <detail.icon className="w-12 h-12 text-cyan-400" />
-                <p className="mt-4 text-sm font-medium text-white sm:text-base">
+                <p className="flex items-center mt-4 text-sm font-medium text-white sm:text-base">
                   {detail.title}
-                  <span className="absolute -left-[1px] w-0.5 h-5 bg-cyan-400 rounded-full" />
+                  <motion.span
+                    initial={{ filter: "grayscale(100%)", height: 0 }}
+                    whileInView={{ filter: "grayscale(0%)", height: "20px" }}
+                    transition={{ delay: 0.15 * index }}
+                    className="absolute -left-[1px] w-0.5  bg-cyan-400 rounded-full"
+                  />
                 </p>
                 <p className="max-w-xs mt-2 text-sm text-left text-white/70 sm:text-base">
                   {detail.paragraph}

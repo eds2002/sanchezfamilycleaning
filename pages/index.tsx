@@ -38,10 +38,10 @@ function GridLines() {
   return (
     <div className="absolute inset-0 pointer-events-none">
       <div className="grid w-full h-full grid-cols-1 px-4 mx-auto md:grid-cols-2 lg:grid-cols-4 max-w-7xl">
-        <div className="border-dotted border-x border-gray-500/5" />
         <div className="border-dotted border-x border-gray-500/10" />
-        <div className="hidden border-dotted border-x border-gray-500/10 lg:block" />
-        <div className="hidden border-dotted border-x border-gray-500/10 lg:block" />
+        <div className="border-r border-dotted border-gray-500/10" />
+        <div className="hidden border-r border-dotted border-gray-500/10 lg:block" />
+        <div className="hidden border-r border-dotted border-gray-500/10 lg:block" />
       </div>
     </div>
   );
