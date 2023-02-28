@@ -6,7 +6,7 @@ import Lenis from "@studio-freight/lenis";
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1,
+      duration: 0.8,
     });
 
     function raf(time: number) {

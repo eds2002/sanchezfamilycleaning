@@ -1,109 +1,98 @@
-import { CheckBadgeIcon } from "@heroicons/react/24/solid";
-import { Button } from "../";
-import React, { useState } from "react";
-import Link from "next/link";
+import { setServers } from "dns";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { BiChevronRight } from "react-icons/bi";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
-import Image from "next/image";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
+import Button from "../Elements/Button";
 
-const Services: React.FC = () => {
-  const services = [
-    {
-      id: "commercialCleaning",
-      service: "Commercial Cleaning",
-      description:
-        "A service to maintain a healthy and productive workspace for your employees.",
-      moreInfoTitle: "Here are some ways we create a healthy environment.",
-      moreInfoParagraph:
-        "These are some things that are included in this package. Services may be customized to fit your needs.",
-      features: [
-        "Dust Removal",
-        "Trash Removal",
-        "Monitor Cleaning",
-        "Vaccume",
-      ],
-      image: "/commercialCleaning.jpg",
-      imgAlt: "Picture of a clean office",
-    },
-    {
-      id: "windowCleaning",
-      service: "Window Cleaning",
-      description:
-        "Professional window cleaning for the windows that need the most attention.",
-      moreInfoTitle: "Our window service.",
-      moreInfoParagraph:
-        "A couple of services included with this package. You may add any service as needed.",
-      features: ["Profound window cleaning"],
-      image: "/windowCleaning.jpg",
-      imgAlt: "Picture of window cleaning.",
-    },
-    {
-      id: "customCleaning",
-      service: "Custom Cleaning",
-      description:
-        "The plan you have full control over. Add any service your business needs.",
-      moreInfoTitle: "A flexible plan.",
-      moreInfoParagraph: "Pick as many services as you'd like",
-      features: [
-        "Trash removal",
-        "Window Cleaning",
-        "Dust Removal",
-        "Floor sweeping",
-        "Floor Mopping",
-        "Monitor Cleaning",
-        "Kitchen Cleaning",
-        "Table disinfecting",
-      ],
-      image: "/flexibleCleaning.jpg",
-      imgAlt: "Picture of sweeping.",
-    },
-  ];
+const services = [
+  {
+    id: "commercialCleaning",
+    service: "Commercial Cleaning",
+    description:
+      "Maintain a healthy and productive workspace for your employees.",
+    moreInfoTitle: "Here are some ways we create a healthy environment.",
+    moreInfoParagraph:
+      "These are some things that are included in this package. Services may be customized to fit your needs.",
+    features: ["Dust Removal", "Trash Removal", "Monitor Cleaning", "Vaccume"],
+    image: "/commercialCleaning.jpg",
+    imgAlt: "Picture of a clean office",
+  },
+  {
+    id: "windowCleaning",
+    service: "Window Cleaning",
+    description:
+      "Professional window cleaning for the windows that need the most attention.",
+    moreInfoTitle: "Our window service.",
+    moreInfoParagraph:
+      "A couple of services included with this package. You may add any service as needed.",
+    features: ["Profound window cleaning"],
+    image: "/windowCleaning.jpg",
+    imgAlt: "Picture of window cleaning.",
+  },
+  {
+    id: "customCleaning",
+    service: "Custom Cleaning",
+    description:
+      "The plan you have full control over. Add any service your business needs.",
+    moreInfoTitle: "A flexible plan.",
+    moreInfoParagraph: "Pick as many services as you'd like",
+    features: [
+      "Trash removal",
+      "Window Cleaning",
+      "Dust Removal",
+      "Floor sweeping",
+      "Floor Mopping",
+      "Monitor Cleaning",
+      "Kitchen Cleaning",
+      "Table disinfecting",
+    ],
+    image: "/flexibleCleaning.jpg",
+    imgAlt: "Picture of sweeping.",
+  },
+];
 
+export default function AllServices() {
   return (
-    <section className="relative py-24 bg-gray-100">
-      <div className="relative z-10 px-4 mx-auto max-w-7xl">
-        <div className="flex flex-col items-center justify-center text-center">
-          <span className="text-lg font-medium text-indigo-600">Services</span>
-          <h2 className="text-3xl font-medium text-center text-slate-900">
-            Interested?
-          </h2>
-          <p className="max-w-md mt-2 text-sm text-black lg:text-lg sm:text-base">
-            Explore our services and request for a quote. You can also{" "}
-            <Link
-              href="/contact-us"
-              className="text-indigo-600 underline cursor-pointer hover:text-indigo-700"
-            >
-              contact us
-            </Link>{" "}
-            if you need more information.
+    <section className="py-24 bg-stone-100">
+      <div className="flex flex-col items-center justify-center px-4 mx-auto max-w-7xl">
+        <div>
+          <h2 className="text-5xl font-semibold text-center">Our Services</h2>
+          <p className="max-w-sm mt-2 text-base text-center opacity-70 lg:text-lg ">
+            See a service you need? Pick them out. You can also create your own
+            service if you would like to.
           </p>
         </div>
-        <div className="flex flex-col-reverse items-center justify-center gap-6 mt-10 gap-x-6 md:flex-row md:items-start">
+        <div className="grid grid-cols-1 gap-4 mt-10 max-w-7xl sm:gap-6 lg:gap-12 md:grid-cols-2 xl:grid-cols-3 ">
           {services.map((service) => (
-            <ServiceCard service={service} key={service.service} />
+            <ServiceCard service={service} key={service.id} />
           ))}
         </div>
       </div>
     </section>
   );
-};
-
-interface iServiceCardProps {
-  service: {
-    desc: string;
-    includes: Array<string>;
-    title: string;
-    handle: string;
-  };
-  index: number;
 }
 
 function ServiceCard({ service }: { service: any }) {
   const [openMoreInfo, setOpenMoreInfo] = useState(false);
+  const [selected, setSelected] = useState<string[]>([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    const { selected } = router.query;
+    if (service.service === selected) {
+      setOpenMoreInfo(true);
+    }
+  }, [router.query, setOpenMoreInfo, service]);
+
   return (
-    <div className="relative flex flex-col items-center justify-center overflow-hidden transition duration-300 bg-white rounded-3xl hover:shadow-2xl">
+    <div
+      id={service.service}
+      className="relative flex flex-col items-center justify-center overflow-hidden transition duration-300 bg-white rounded-3xl hover:shadow-2xl"
+    >
       <div className="relative p-4 md:p-6 lg:p-7">
         <p className="text-2xl font-medium sm:text-2xl lg:text-3xl">
           {service.service}
@@ -111,16 +100,21 @@ function ServiceCard({ service }: { service: any }) {
         <p className="text-base opacity-70 lg:text-lg">{service.description}</p>
         <Button
           theme="none"
+          onClick={() => setOpenMoreInfo(true)}
           className="flex items-center justify-center text-indigo-600 gap-x-1"
-          href={`/services?selected=${service.service}`}
         >
-          Learn more
+          {service.service === "Custom Cleaning"
+            ? "Pick services"
+            : "Learn more"}
           <BiChevronRight />
         </Button>
         <div className="pt-12 ">
           <Button
             theme="primary"
             fullWidth
+            href={`/request-a-quote?quote=${
+              service.service
+            }&selected=${encodeURI(JSON.stringify(selected))}`}
             className="flex items-center justify-center py-4 gap-x-2 group justify-self-end "
           >
             Request a quote
@@ -141,6 +135,8 @@ function ServiceCard({ service }: { service: any }) {
           <MoreInformation
             service={service}
             setOpenMoreInfo={setOpenMoreInfo}
+            selected={selected}
+            setSelected={setSelected}
           />
         )}
       </AnimatePresence>
@@ -151,11 +147,14 @@ function ServiceCard({ service }: { service: any }) {
 function MoreInformation({
   service,
   setOpenMoreInfo,
+  selected,
+  setSelected,
 }: {
   service: any;
   setOpenMoreInfo: (val: boolean) => void;
+  selected: string[];
+  setSelected: (val: any) => void;
 }) {
-  const [selected, setSelected] = useState<string[]>([]);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -212,5 +211,3 @@ function MoreInformation({
     </motion.div>
   );
 }
-
-export default Services;

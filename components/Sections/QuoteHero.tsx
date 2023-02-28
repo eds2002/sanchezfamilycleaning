@@ -6,9 +6,18 @@ import Button from "../Elements/Button";
 import { TbConfetti } from "react-icons/tb";
 
 const QuoteHero: React.FC = () => {
+  const router = useRouter();
   const [successModal, setSuccessModal] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [selectedServices, setSelectedServices] = useState<string>("");
+
+  useEffect(() => {
+    const { selected } = router.query;
+    if (selected) {
+      setSelectedServices(selected as string);
+    }
+  }, [router.query]);
 
   const inputs = [
     {
@@ -39,10 +48,10 @@ const QuoteHero: React.FC = () => {
     //   label: "Company size",
     // },
     {
-      name: "package",
+      name: "service",
       type: "dropdown",
-      values: ["Basic", "Deep", "Custom"],
-      label: "Package",
+      values: ["Commercial Cleaning", "Window Cleaning", "Custom Cleaning"],
+      label: "Service",
     },
   ];
 
@@ -57,7 +66,11 @@ const QuoteHero: React.FC = () => {
       lastName: target.lastName.value,
       workEmail: target.workEmail.value,
       // companySize: target.companySize.value,
-      userSelectedPackage: target.package.value,
+      userSelectedPackage: target.service.value,
+      ...(selectedServices &&
+        target.service.value === "Custom Cleaning" && {
+          selectedServices: selectedServices,
+        }),
     };
 
     const domain =
@@ -153,7 +166,7 @@ const SuccessModal: React.FC<iSuccessModalProps> = ({ setSuccessModal }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-10 flex items-center justify-center p-4 bg-black/70"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70"
     >
       <motion.div
         initial={{ y: "100%", opacity: 0 }}
@@ -197,11 +210,13 @@ const Input: React.FC<iInputProps> = (props) => {
     ...inputProps
   } = props;
   const [packageValue, setPackageValue] = useState("");
+  const [selectedServices, setSelectedServices] = useState<string>("");
   const [focused, setFocused] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    if (Object.keys(router.query).length != 0) {
+    const { quote, selected } = router.query;
+    if (quote) {
       setPackageValue(router.query.quote as string);
     }
   }, [router.query]);
@@ -240,11 +255,7 @@ const Input: React.FC<iInputProps> = (props) => {
               )}
               {values?.map((value: string) => (
                 <>
-                  <option
-                    selected={
-                      value.toLowerCase() === packageValue ? true : false
-                    }
-                  >
+                  <option selected={value === packageValue ? true : false}>
                     {value}
                   </option>
                 </>
@@ -278,7 +289,7 @@ interface CustomElements extends HTMLFormControlsCollection {
   lastName: HTMLInputElement;
   workEmail: HTMLInputElement;
   companySize: HTMLInputElement;
-  package: HTMLInputElement;
+  service: HTMLInputElement;
 }
 
 interface CustomForm extends HTMLFormElement {
