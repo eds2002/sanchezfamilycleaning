@@ -9,12 +9,13 @@ import {
   ContactUs,
   HomeTestimonials,
 } from "../components";
+import NumbersSection from "../components/Sections/home/NumbersSection";
 
 const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Home - Sanchez Family Cleaning</title>
+        <title>Home | Sanchez Family Cleaning</title>
         <meta
           name="description"
           content="Professional cleaners based in New Jersey."
@@ -23,6 +24,7 @@ const Home: NextPage = () => {
       </Head>
       <main className="relative">
         <Hero />
+        <NumbersSection />
         <AboutUs />
         <Services />
         <Motives />

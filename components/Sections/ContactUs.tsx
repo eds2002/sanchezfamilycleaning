@@ -23,7 +23,7 @@ const details = [
 const ContactUs: React.FC = () => {
   return (
     <>
-      <section className="relative flex items-center justify-center py-24 md:py-44">
+      <section className="relative flex items-center justify-center py-44">
         <div className="flex flex-col items-center w-full px-4 mx-auto max-w-7xl lg:flex-row gap-y-10">
           <Heading />
           <Icons />
@@ -37,7 +37,7 @@ const Heading = () => (
   <div className="grid flex-col items-start justify-center flex-1 w-full grid-cols-2 text-center">
     <div className="flex flex-col items-start justify-center col-span-2 ">
       <span className="text-lg font-medium text-indigo-600">Contact Us</span>
-      <h2 className="text-3xl font-medium text-center text-slate-900">
+      <h2 className="text-3xl font-medium text-left text-slate-900">
         Ready to start a new adventure?
       </h2>
       <p className="max-w-md mt-2 text-sm text-left text-black lg:text-lg sm:text-base">
