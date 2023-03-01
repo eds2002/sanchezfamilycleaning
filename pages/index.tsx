@@ -15,11 +15,42 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Home | Sanchez Family Cleaning</title>
+        <title>
+          Premium Cleaning Services in New Jersey | Sanchez Family Cleaning
+        </title>
         <meta
           name="description"
-          content="Professional cleaners based in New Jersey."
+          content="Learn why we are a trusted cleaning service around New Jersey! Premium services all around to suit your cleaning needs. Start today!"
         />
+        <meta
+          property="og:title"
+          content="Premium Cleaning Services in New Jersey | Sanchez Family Cleaning"
+        />
+        <meta property="og:url" content="https://sanchezfamilycleaning.com/" />
+        <meta
+          property="og:description"
+          content="Learn why we are a trusted cleaning service around New Jersey! Premium services all around to suit your cleaning needs. Start today!"
+        />
+        <meta property="og:site_name" content="Sanchez Family Cleaning" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="Sanchez Family Cleaning" />
+        <meta
+          property="twitter:domain"
+          content="https://sanchezfamilycleaning.com/"
+        />
+        <meta
+          property="twitter:url"
+          content="https://sanchezfamilycleaning.com/"
+        />
+        <meta
+          name="twitter:title"
+          content="Premium Cleaning Services in New Jersey | Sanchez Family Cleaning"
+        />
+        <meta
+          name="twitter:description"
+          content="Learn why we are a trusted cleaning service around New Jersey! Premium services all around to suit your cleaning needs. Start today!"
+        />
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="relative">

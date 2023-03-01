@@ -31,6 +31,26 @@ const Header = ({ logoColor }: { logoColor?: string }) => {
   ];
 
   useEffect(() => {
+    switch (window.location.pathname) {
+      case "/":
+        setCurrentTab("Home");
+        break;
+      case "/services":
+        setCurrentTab("Services");
+        break;
+      case "/about-us":
+        setCurrentTab("About Us");
+        break;
+      case "/contact-us":
+        setCurrentTab("Contact Us");
+        break;
+      default:
+        setCurrentTab(null);
+        break;
+    }
+  }, []);
+
+  useEffect(() => {
     if (openMobileNav) {
       document.body.style.overflow = "hidden";
     } else {
@@ -68,7 +88,7 @@ const Header = ({ logoColor }: { logoColor?: string }) => {
                       transition={{ duration: 0.3 }}
                       key={`active-${nav.title}`}
                       layoutId="tabSelector"
-                      className="absolute inset-0 bg-slate-200/25 rounded-md z-[-1]"
+                      className="absolute inset-0 bg-stone-200/25 rounded-md z-[-1]"
                     />
                   )}
                 </AnimatePresence>

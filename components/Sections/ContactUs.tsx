@@ -72,12 +72,7 @@ const Icons = () => (
         <detail.icon className="w-12 h-12 text-indigo-600" />
         <p className="flex items-center mt-4 text-sm font-medium sm:text-base">
           {detail.title}
-          <motion.span
-            initial={{ filter: "grayscale(100%)", height: 0 }}
-            whileInView={{ filter: "grayscale(0%)", height: "20px" }}
-            transition={{ delay: 0.15 * index }}
-            className="absolute -left-[0.5px] rounded-full w-0.5 h-5 bg-indigo-600"
-          />
+          <motion.span className="absolute -left-[0.5px] rounded-full w-0.5 h-5 bg-indigo-600" />
         </p>
         <p className="mt-2 text-sm text-left opacity-70 sm:text-base">
           {detail.paragraph}

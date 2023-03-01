@@ -14,7 +14,12 @@ const AboutUs: NextPage = () => {
   return (
     <>
       <Head>
-        <title>About us | Sanchez Family Cleaning</title>
+        <title>About Us | Sanchez Family Cleaning</title>
+        <meta
+          name="description"
+          content="A quick brief history about our company and how far we've progressed over these past 2 decades."
+        />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
       <main className="relative pb-24 md:pb-0">

@@ -6,7 +6,12 @@ export default function ContactUs() {
   return (
     <>
       <Head>
-        <title>Contact us | Sanchez Family Cleaning</title>
+        <title>Contact Us | Sanchez Family Cleaning</title>
+        <meta
+          name="description"
+          content="Questions about our services or us? Contact us, we are a click away."
+        />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
       <main className="pb-24 md:pb-0">

@@ -69,12 +69,7 @@ const AboutUs: React.FC = () => {
                 <detail.icon className="w-12 h-12 text-cyan-400" />
                 <p className="flex items-center mt-4 text-sm font-medium text-white sm:text-base">
                   {detail.title}
-                  <motion.span
-                    initial={{ filter: "grayscale(100%)", height: 0 }}
-                    whileInView={{ filter: "grayscale(0%)", height: "20px" }}
-                    transition={{ delay: 0.15 * index }}
-                    className="absolute -left-[1px] w-0.5  bg-cyan-400 rounded-full"
-                  />
+                  <motion.span className="absolute -left-[1px] w-0.5  bg-cyan-400 rounded-full" />
                 </p>
                 <p className="max-w-xs mt-2 text-sm text-left text-white/70 sm:text-base">
                   {detail.paragraph}
