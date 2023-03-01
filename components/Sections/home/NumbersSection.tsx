@@ -85,7 +85,7 @@ const DetailContainer = ({ detail }: { detail: any }) => {
       className="relative flex flex-col items-start justify-start w-full h-full px-4"
       key={detail.title}
     >
-      <animated.div className="relative flex items-center mt-4 text-2xl font-semibold md:text-3xl lg:text-4xl xltext-5xl ">
+      <animated.div className="relative flex items-center mt-4 text-5xl font-bold md:text-3xl lg:text-4xl xltext-5xl ">
         <animated.p ref={ref}>
           {number.number.to((n: number) => n.toFixed(0))}
         </animated.p>

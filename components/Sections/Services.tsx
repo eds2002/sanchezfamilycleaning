@@ -24,7 +24,7 @@ const Services: React.FC = () => {
         "Monitor Cleaning",
         "Vaccume",
       ],
-      image: "/commercialCleaning.jpg",
+      image: "/commercialCleaning.webp",
       imgAlt: "Picture of a clean office",
     },
     {
@@ -36,7 +36,7 @@ const Services: React.FC = () => {
       moreInfoParagraph:
         "A couple of services included with this package. You may add any service as needed.",
       features: ["Profound window cleaning"],
-      image: "/windowCleaning.jpg",
+      image: "/windowCleaning.webp",
       imgAlt: "Picture of window cleaning.",
     },
     {
@@ -56,7 +56,7 @@ const Services: React.FC = () => {
         "Kitchen Cleaning",
         "Table disinfecting",
       ],
-      image: "/flexibleCleaning.jpg",
+      image: "/flexibleCleaning.webp",
       imgAlt: "Picture of sweeping.",
     },
   ];
@@ -103,27 +103,20 @@ interface iServiceCardProps {
 function ServiceCard({ service }: { service: any }) {
   const [openMoreInfo, setOpenMoreInfo] = useState(false);
   return (
-    <div className="relative flex flex-col items-center justify-center overflow-hidden transition duration-300 bg-white rounded-3xl hover:shadow-2xl">
+    <div className="relative flex flex-col items-center justify-center overflow-hidden transition duration-300 bg-white rounded-3xl ">
       <div className="relative p-4 md:p-6 lg:p-7">
         <p className="text-2xl font-medium sm:text-2xl lg:text-3xl">
           {service.service}
         </p>
         <p className="text-base opacity-70 lg:text-lg">{service.description}</p>
-        <Button
-          theme="none"
-          className="flex items-center justify-center text-indigo-600 gap-x-1"
-          href={`/services?selected=${service.service}`}
-        >
-          Learn more
-          <BiChevronRight />
-        </Button>
         <div className="pt-12 ">
           <Button
             theme="primary"
             fullWidth
             className="flex items-center justify-center py-4 gap-x-2 group justify-self-end "
+            href={`/services?selected=${service.service}`}
           >
-            Request a quote
+            Learn more
             <HiArrowRight className="w-3 h-3 transition duration-300 group-hover:translate-x-1" />
           </Button>
         </div>
@@ -134,6 +127,7 @@ function ServiceCard({ service }: { service: any }) {
           alt={service.imgAlt}
           fill
           className="object-cover w-full h-full "
+          priority
         />
       </div>
       <AnimatePresence>

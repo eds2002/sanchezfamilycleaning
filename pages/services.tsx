@@ -9,24 +9,23 @@ import Hero from "../components/servicespage/Hero";
 
 const Services: NextPage = () => {
   const router = useRouter();
-  const scrollTo = async (selected: any) => {
-    document
-      .getElementById(selected)
-      ?.scrollIntoView({ behavior: "smooth", block: "end" });
-  };
-  useEffect(() => {
-    const { selected } = router.query;
-    if (selected) {
-      scrollTo(selected);
-    }
-  }, [router.query]);
+  // const scrollTo = async (selected: any) => {
+  //   document
+  //     .getElementById(selected)
+  //     ?.scrollIntoView({ behavior: "smooth", block: "end" });
+  // };
+  // useEffect(() => {
+  //   const { selected } = router.query;
+  //   if (selected) {
+  //     scrollTo(selected);
+  //   }
+  // }, [router.query]);
   return (
     <>
       <Head>
         <title>Our services | Sanchez Family Cleaning</title>
       </Head>
       <main className="min-h-screen pb-24 bg-stone-100">
-        <Header />
         <Hero />
         <AllServices />
       </main>

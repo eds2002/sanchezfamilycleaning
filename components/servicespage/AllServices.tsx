@@ -18,7 +18,7 @@ const services = [
     moreInfoParagraph:
       "These are some things that are included in this package. Services may be customized to fit your needs.",
     features: ["Dust Removal", "Trash Removal", "Monitor Cleaning", "Vaccume"],
-    image: "/commercialCleaning.jpg",
+    image: "/commercialCleaning.webp",
     imgAlt: "Picture of a clean office",
   },
   {
@@ -30,7 +30,7 @@ const services = [
     moreInfoParagraph:
       "A couple of services included with this package. You may add any service as needed.",
     features: ["Profound window cleaning"],
-    image: "/windowCleaning.jpg",
+    image: "/windowCleaning.webp",
     imgAlt: "Picture of window cleaning.",
   },
   {
@@ -50,7 +50,7 @@ const services = [
       "Kitchen Cleaning",
       "Table disinfecting",
     ],
-    image: "/flexibleCleaning.jpg",
+    image: "/flexibleCleaning.webp",
     imgAlt: "Picture of sweeping.",
   },
 ];
@@ -91,10 +91,12 @@ function ServiceCard({ service }: { service: any }) {
   return (
     <div
       id={service.service}
-      className="relative flex flex-col items-center justify-center overflow-hidden transition duration-300 bg-white rounded-3xl hover:shadow-2xl"
+      className={`relative flex flex-col items-center justify-center overflow-hidden transition duration-300 bg-white rounded-3xl ${
+        openMoreInfo && "shadow-2xl"
+      } `}
     >
       <div className="relative p-4 md:p-6 lg:p-7">
-        <p className="text-2xl font-medium sm:text-2xl lg:text-3xl">
+        <p className="text-2xl font-semibold sm:text-2xl lg:text-3xl">
           {service.service}
         </p>
         <p className="text-base opacity-70 lg:text-lg">{service.description}</p>
