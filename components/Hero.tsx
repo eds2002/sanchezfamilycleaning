@@ -7,7 +7,7 @@ import {
 import Image from "next/image";
 import React, { useRef } from "react";
 import { Button, Header } from "./";
-import heroimg from "../public/heroimage.jpg";
+import heroimg from "../public/heroimage.png";
 
 const Hero: React.FC = () => {
   const ref = useRef(null);
@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
     offset: ["start start", "end start"],
   });
   let y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const title = ["Sanchez", "Family", "Cleaning"];
+  const title = "Premium Office Cleaning in New Jersey";
   const paragraph =
     "Reduce clutter & increase productivity: Sanchez Family Cleaning is a well respected and trusted company dedicated to keeping your offices clean.";
   return (
@@ -25,11 +25,11 @@ const Hero: React.FC = () => {
         <Header logoColor="text-white" />
       </div>
       <div className="relative z-10 flex flex-col items-center justify-start h-full px-4 mx-auto text-white max-w-7xl">
-        <div className="flex flex-col items-center justify-center mx-auto">
+        <div className="flex flex-col mr-auto">
           <AnimatePresence>
-            <div className="flex flex-wrap items-center justify-center text-5xl font-semibold text-center lg:text-7xl">
-              {title.map((word, index) => (
-                <p key={word} className="p-1 pr-4 overflow-y-hidden">
+            <div className="flex flex-wrap max-w-xl text-5xl font-semibold text-left lg:text-5xl">
+              {title.split(" ").map((word, index) => (
+                <p key={word} className="overflow-y-hidden ">
                   <motion.span
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
@@ -38,16 +38,17 @@ const Hero: React.FC = () => {
                       duration: 1,
                       delay: index * 0.1,
                     }}
-                    className="inline-block "
+                    className="inline-block py-1"
                   >
                     {word}
+                    &nbsp;
                   </motion.span>
                 </p>
               ))}
             </div>
-            <div className="flex flex-wrap items-center justify-center max-w-xl mt-2 text-base text-center lg:text-lg opacity-80">
+            <div className="flex flex-wrap items-center justify-start max-w-xl mt-2 text-base text-left lg:text-lg opacity-80">
               {paragraph.split(" ").map((word, index) => (
-                <p key={word} className="p-1 pr-[1px] overflow-y-hidden">
+                <p key={word} className="overflow-y-hidden ">
                   <motion.span
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
@@ -59,6 +60,7 @@ const Hero: React.FC = () => {
                     className="inline-block "
                   >
                     {word}
+                    &nbsp;
                   </motion.span>
                 </p>
               ))}
@@ -81,7 +83,7 @@ const Hero: React.FC = () => {
                   Request a quote
                 </p>
               </Button>
-              <Button
+              {/* <Button
                 key="callUsBtn"
                 text=""
                 theme="none"
@@ -95,7 +97,7 @@ const Hero: React.FC = () => {
                 }}
               >
                 Call Us
-              </Button>
+              </Button> */}
             </div>
           </AnimatePresence>
         </div>

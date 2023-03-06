@@ -22,7 +22,7 @@ export default function NumbersSection() {
     },
   ];
   return (
-    <section className="relative py-24 bg-gray-100">
+    <section className="relative py-24 ">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col items-start">
           <div className="flex flex-col items-start px-8">
@@ -85,7 +85,7 @@ const DetailContainer = ({ detail }: { detail: any }) => {
       className="relative flex flex-col items-start justify-start w-full h-full px-4"
       key={detail.title}
     >
-      <animated.div className="relative flex items-center mt-4 text-5xl font-bold md:text-3xl lg:text-4xl xltext-5xl ">
+      <animated.div className="relative flex items-center mt-4 text-5xl font-bold">
         <animated.p ref={ref}>
           {number.number.to((n: number) => n.toFixed(0))}
         </animated.p>
