@@ -1,73 +1,65 @@
-import React, { useEffect, useState } from "react";
-import { Button } from "..";
-import {
-  Bars3Icon,
-  ChevronRightIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/solid";
-import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useState } from 'react'
+import { Button } from '..'
+import { Bars3Icon, ChevronRightIcon, XMarkIcon } from '@heroicons/react/24/solid'
+import Link from 'next/link'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const Header = ({ logoColor }: { logoColor?: string }) => {
-  const [openMobileNav, setOpenMobileNav] = useState(false);
-  const [currentTab, setCurrentTab] = useState<string | null>(null);
+  const [openMobileNav, setOpenMobileNav] = useState(false)
+  const [currentTab, setCurrentTab] = useState<string | null>(null)
   const navItems = [
     {
-      title: "Home",
-      handle: "/",
+      title: 'Home',
+      handle: '/',
     },
     {
-      title: "Services",
-      handle: "services",
+      title: 'Services',
+      handle: 'services',
     },
     {
-      title: "About Us",
-      handle: "about-us",
+      title: 'About Us',
+      handle: 'about-us',
     },
     {
-      title: "Contact Us",
-      handle: "contact-us",
+      title: 'Contact Us',
+      handle: 'contact-us',
     },
-  ];
+  ]
 
   useEffect(() => {
     switch (window.location.pathname) {
-      case "/":
-        setCurrentTab("Home");
-        break;
-      case "/services":
-        setCurrentTab("Services");
-        break;
-      case "/about-us":
-        setCurrentTab("About Us");
-        break;
-      case "/contact-us":
-        setCurrentTab("Contact Us");
-        break;
+      case '/':
+        setCurrentTab('Home')
+        break
+      case '/services':
+        setCurrentTab('Services')
+        break
+      case '/about-us':
+        setCurrentTab('About Us')
+        break
+      case '/contact-us':
+        setCurrentTab('Contact Us')
+        break
       default:
-        setCurrentTab(null);
-        break;
+        setCurrentTab(null)
+        break
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
     if (openMobileNav) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = ''
     }
-  }, [openMobileNav]);
+  }, [openMobileNav])
 
   return (
     <>
       <section className="relative z-20 py-4">
         <div className="flex items-center justify-between px-4 mx-auto gap-x-6 max-w-7xl">
           <Link href="/">
-            <h1
-              className={`text-3xl font-semibold transition duration-200 hover:opacity-70 ${logoColor}`}
-            >
-              S.F.C
-            </h1>
+            <h1 className={`text-3xl font-semibold transition duration-200 hover:opacity-70 ${logoColor}`}>S.F.C</h1>
           </Link>
           <ul className="items-center hidden list-none md:flex">
             {navItems.map((nav) => (
@@ -103,60 +95,49 @@ const Header = ({ logoColor }: { logoColor?: string }) => {
             </Link>
           </div>
           <div className="block cursor-pointer md:hidden">
-            <Button
-              theme="tertiary"
-              onClick={() => setOpenMobileNav(!openMobileNav)}
-              ariaLabel="menu"
-            >
+            <Button theme="tertiary" onClick={() => setOpenMobileNav(!openMobileNav)} ariaLabel="menu">
               <Bars3Icon className="w-5 h-5" />
             </Button>
           </div>
         </div>
       </section>
-      <MobileNav
-        openMobileNav={openMobileNav}
-        setOpenMobileNav={setOpenMobileNav}
-      />
+      <MobileNav openMobileNav={openMobileNav} setOpenMobileNav={setOpenMobileNav} />
     </>
-  );
-};
+  )
+}
 
 const MobileNav: React.FC<{
-  openMobileNav: boolean;
-  setOpenMobileNav: (openMobileNav: boolean) => void;
+  openMobileNav: boolean
+  setOpenMobileNav: (openMobileNav: boolean) => void
 }> = ({ openMobileNav, setOpenMobileNav }) => {
   const mobileNavItems = [
     {
-      title: "Home",
-      handle: "/",
+      title: 'Home',
+      handle: '/',
     },
     {
-      title: "Services",
-      handle: "services",
+      title: 'Services',
+      handle: 'services',
     },
     {
-      title: "About Us",
-      handle: "about-us",
+      title: 'About Us',
+      handle: 'about-us',
     },
     {
-      title: "Contact Us",
-      handle: "contact-us",
+      title: 'Contact Us',
+      handle: 'contact-us',
     },
-  ];
+  ]
   return (
     <div
       className={`fixed inset-0 z-30 p-4 bg-black/25 backdrop-blur-3xl h-screen ${
-        openMobileNav
-          ? "opacity-100 pointer-events-auto"
-          : "opacity-0 pointer-events-none"
+        openMobileNav ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       } transition duration-500 ease-in-out md:hidden`}
     >
       <div className="relative w-full h-full overflow-hidden bg-gray-100 shadow-xl rounded-xl">
         <div className="flex items-start justify-between p-4">
           <Link href="/">
-            <p className="text-3xl font-semibold transition duration-200 hover:opacity-70">
-              S.F.C
-            </p>
+            <p className="text-3xl font-semibold transition duration-200 hover:opacity-70">S.F.C</p>
           </Link>
           <div
             className="p-1 text-white rounded-full cursor-pointer bg-slate-900 hover:bg-slate-800"
@@ -166,41 +147,30 @@ const MobileNav: React.FC<{
           </div>
         </div>
         <ul className="list-none divide-y mt-7 divide-black/10">
-          {mobileNavItems.map(
-            (navItem: {
-              title?: string;
-              subLinks?: Array<string>;
-              handle: string;
-            }) => (
-              <li
-                className={navItem?.subLinks && "bg-neutral-200/30"}
-                key={navItem.title}
-              >
-                <Link href={navItem.handle} key={navItem.title}>
-                  <p
-                    className={`p-4 text-2xl font-medium  ${
-                      navItem?.subLinks
-                        ? "border-b cursor-default"
-                        : "hover:opacity-70 cursor-pointer"
-                    }`}
-                  >
-                    {navItem?.title}
-                  </p>
-                  <ul className="divide-y divide-black/5s">
-                    {navItem?.subLinks?.map((sub) => (
-                      <li
-                        className="flex items-center justify-between px-8 py-4 text-lg font-medium cursor-pointer hover:opacity-70"
-                        key={sub}
-                      >
-                        {sub}
-                        <ChevronRightIcon className="w-5 h-5" />
-                      </li>
-                    ))}
-                  </ul>
-                </Link>
-              </li>
-            )
-          )}
+          {mobileNavItems.map((navItem: { title?: string; subLinks?: Array<string>; handle: string }) => (
+            <li className={navItem?.subLinks && 'bg-neutral-200/30'} key={navItem.title}>
+              <Link href={navItem.handle} key={navItem.title}>
+                <p
+                  className={`p-4 text-2xl font-medium  ${
+                    navItem?.subLinks ? 'border-b cursor-default' : 'hover:opacity-70 cursor-pointer'
+                  }`}
+                >
+                  {navItem?.title}
+                </p>
+                <ul className="divide-y divide-black/5s">
+                  {navItem?.subLinks?.map((sub) => (
+                    <li
+                      className="flex items-center justify-between px-8 py-4 text-lg font-medium cursor-pointer hover:opacity-70"
+                      key={sub}
+                    >
+                      {sub}
+                      <ChevronRightIcon className="w-5 h-5" />
+                    </li>
+                  ))}
+                </ul>
+              </Link>
+            </li>
+          ))}
         </ul>
         <div className="absolute bottom-0 left-0 right-0 flex items-center justify-center py-6 bg-neutral-200/50 rounded-tl-xl rounded-tr-xl">
           <Link href="/request-a-quote">
@@ -211,11 +181,7 @@ const MobileNav: React.FC<{
         </div>
       </div>
     </div>
-  );
-};
-
-function delay(t: any) {
-  return new Promise((resolve) => setTimeout(resolve, t));
+  )
 }
 
-export default Header;
+export default Header

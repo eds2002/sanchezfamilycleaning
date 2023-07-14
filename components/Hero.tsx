@@ -1,24 +1,19 @@
-import {
-  AnimatePresence,
-  motion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-import Image from "next/image";
-import React, { useRef } from "react";
-import { Button, Header } from "./";
-import heroimg from "../public/heroimage.png";
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
+import Image from 'next/image'
+import React, { useRef } from 'react'
+import { Button, Header } from './'
+import heroimg from '../public/heroimage.png'
 
-const Hero: React.FC = () => {
-  const ref = useRef(null);
+export default function Hero() {
+  const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
-  });
-  let y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const title = "Premium Office Cleaning in New Jersey";
+    offset: ['start start', 'end start'],
+  })
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
+  const title = 'Premium Office Cleaning in New Jersey'
   const paragraph =
-    "Reduce clutter & increase productivity: Sanchez Family Cleaning is a well respected and trusted company dedicated to keeping your offices clean.";
+    'Reduce clutter & increase productivity: Sanchez Family Cleaning is a well respected and trusted company dedicated to keeping your offices clean.'
   return (
     <section className="relative z-10 pt-48 pb-32 md:pb-48 md:pt-56" ref={ref}>
       <div className="absolute top-0 left-0 right-0 z-20 ">
@@ -28,10 +23,10 @@ const Hero: React.FC = () => {
         <div className="flex flex-col mr-auto">
           <AnimatePresence>
             <div className="flex flex-wrap max-w-xl text-5xl font-semibold text-left lg:text-5xl">
-              {title.split(" ").map((word, index) => (
+              {title.split(' ').map((word, index) => (
                 <p key={word} className="overflow-y-hidden ">
                   <motion.span
-                    initial={{ y: "100%" }}
+                    initial={{ y: '100%' }}
                     animate={{ y: 0 }}
                     transition={{
                       ease: [0.45, 0, 0, 1],
@@ -47,10 +42,10 @@ const Hero: React.FC = () => {
               ))}
             </div>
             <div className="flex flex-wrap items-center justify-start max-w-xl mt-2 text-base text-left lg:text-lg opacity-80">
-              {paragraph.split(" ").map((word, index) => (
+              {paragraph.split(' ').map((word, index) => (
                 <p key={word} className="overflow-y-hidden ">
                   <motion.span
-                    initial={{ y: "100%" }}
+                    initial={{ y: '100%' }}
                     animate={{ y: 0 }}
                     transition={{
                       ease: [0.45, 0, 0, 1],
@@ -79,9 +74,7 @@ const Hero: React.FC = () => {
                   ease: [0.45, 0, 0, 1],
                 }}
               >
-                <p className="py-1 text-sm w-max sm:text-base">
-                  Request a quote
-                </p>
+                <p className="py-1 text-sm w-max sm:text-base">Request a quote</p>
               </Button>
               {/* <Button
                 key="callUsBtn"
@@ -104,23 +97,14 @@ const Hero: React.FC = () => {
       </div>
       <HeroImage />
     </section>
-  );
-};
+  )
+}
 
 function HeroImage() {
   return (
     <div className="absolute inset-0">
       <div className="absolute inset-0 z-[5] bg-black/50" />
-      <Image
-        priority
-        placeholder="blur"
-        src={heroimg}
-        fill
-        className="object-cover"
-        alt="image of janitor"
-      />
+      <Image priority placeholder="blur" src={heroimg} fill className="object-cover" alt="image of janitor" />
     </div>
-  );
+  )
 }
-
-export default Hero;
