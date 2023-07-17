@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react'
 import type { SVGProps } from 'react'
 
 const navigation = {

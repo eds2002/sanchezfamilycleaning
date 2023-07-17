@@ -13,7 +13,7 @@ async function fetchHomeData(): Promise<HomePageData> {
   return homepage[0]
 }
 
-export default async function Page({}) {
+export default async function HomePage({}) {
   const homepage = await fetchHomeData()
   return (
     <>
