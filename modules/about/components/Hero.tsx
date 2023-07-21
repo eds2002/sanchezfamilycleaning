@@ -1,6 +1,8 @@
+import React from 'react'
 import type { AboutPageData } from '@/modules/interface'
 import { urlForImage } from '@/sanity/lib/image'
 import Image from 'next/image'
+import Link from 'next/link'
 
 function GaussianBg() {
   return (
@@ -60,15 +62,12 @@ export default function Hero({ data }: { data: AboutPageData['hero'] }) {
                     {data.subheading}
                   </p>
                   <div className="flex items-center mt-10 gap-x-6">
-                    <a
-                      href="#"
+                    <Link
+                      href="/contact"
                       className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                       Get a free quote
-                    </a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-                      Live demo <span aria-hidden="true">→</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="flex justify-end gap-8 mt-14 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">

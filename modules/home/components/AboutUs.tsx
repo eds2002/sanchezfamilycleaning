@@ -1,3 +1,4 @@
+import React from 'react'
 import { ArrowPathIcon, CloudArrowUpIcon, LockClosedIcon } from '@heroicons/react/20/solid'
 
 const features = [
@@ -26,7 +27,7 @@ const features = [
 
 export default function AboutUs() {
   return (
-    <div className="py-24 bg-white sm:py-32">
+    <div className="py-24 sm:py-32">
       <div className="px-6 mx-auto max-w-7xl lg:px-8">
         <div className="max-w-2xl mx-auto lg:text-center">
           <h2 className="text-base font-semibold leading-7 text-indigo-600">Deploy faster</h2>

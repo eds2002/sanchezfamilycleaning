@@ -6,7 +6,7 @@ import { Bars3Icon, BuildingOfficeIcon, XMarkIcon, ArrowsPointingOutIcon } from 
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import Image from 'next/image'
-import type { ServiceInterface } from '@/modules/interface'
+import type { Service } from '@/modules/interface'
 import classNames from '@/modules/shared/utils/classNames'
 
 const links = [
@@ -23,7 +23,7 @@ const links = [
 export default function Header({
   services,
 }: {
-  services: Pick<ServiceInterface, 'title' | 'isPopular' | 'shortDesc' | 'slug'>[]
+  services: Pick<Service, 'title' | 'isPopular' | 'shortDesc' | 'link'>[]
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const servicesArr = [
@@ -38,13 +38,13 @@ export default function Header({
       name: service.title,
       isPopular: service.isPopular,
       description: service.shortDesc,
-      href: `/services/${service.slug.current}`,
+      href: `${service.link}`,
       icon: BuildingOfficeIcon,
     })),
   ]
 
   return (
-    <header className="absolute top-0 left-0 right-0 bg-transparent z-[10] isolate ">
+    <header className="absolute top-0 left-0 right-0 z-10 bg-transparent isolate ">
       <nav className="flex items-center justify-between w-full p-6 mx-auto max-w-7xl lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
@@ -88,25 +88,27 @@ export default function Header({
               leaveTo="opacity-0 -translate-y-1"
             >
               <Popover.Panel className="absolute inset-x-0 top-0 bg-white shadow-lg -z-10 pt-14 ring-1 ring-gray-900/5">
-                <div className="grid grid-cols-4 px-6 py-10 mx-auto max-w-7xl gap-x-4 lg:px-8 xl:gap-x-8">
-                  {servicesArr.map((item) => (
-                    <div key={item.name} className="relative p-6 text-sm leading-6 rounded-lg group hover:bg-gray-50">
-                      <div className="flex items-center justify-center mb-6 rounded-lg h-11 w-11 bg-gray-50 group-hover:bg-white">
-                        <item.icon className="w-6 h-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
+                {({ close }) => (
+                  <div className="grid grid-cols-4 px-6 py-10 mx-auto max-w-7xl gap-x-4 lg:px-8 xl:gap-x-8">
+                    {servicesArr.map((item) => (
+                      <div key={item.name} className="relative p-6 text-sm leading-6 rounded-lg group hover:bg-gray-50">
+                        <div className="flex items-center justify-center mb-6 rounded-lg h-11 w-11 bg-gray-50 group-hover:bg-white">
+                          <item.icon className="w-6 h-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
+                        </div>
+                        {item.isPopular && (
+                          <span className="absolute items-center px-2 py-1 text-xs font-medium text-purple-700 bg-purple-100 rounded-full top-6 right-6">
+                            Popular
+                          </span>
+                        )}
+                        <Link onClick={() => close()} href={item.href} className="block font-semibold text-gray-900">
+                          {item.name}
+                          <span className="absolute inset-0" />
+                        </Link>
+                        <p className="mt-1 text-gray-600">{item.description}</p>
                       </div>
-                      {item.isPopular && (
-                        <span className="absolute items-center px-2 py-1 text-xs font-medium text-purple-700 bg-purple-100 rounded-full top-6 right-6">
-                          Popular
-                        </span>
-                      )}
-                      <a href={item.href} className="block font-semibold text-gray-900">
-                        {item.name}
-                        <span className="absolute inset-0" />
-                      </a>
-                      <p className="mt-1 text-gray-600">{item.description}</p>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                )}
               </Popover.Panel>
             </Transition>
           </Popover>

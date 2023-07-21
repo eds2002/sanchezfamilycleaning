@@ -1,189 +1,151 @@
-import type { Image } from 'sanity'
+import {
+  ABOUT_COMPONENT_STYLES,
+  CONTACT_COMPONENT_STYLES,
+  CTA_COMPONENT_STYLES,
+  FAQ_COMPONENT_STYLES,
+  HERO_COMPONENT_STYLES,
+  SERVICES_COMPONENT_STYLES,
+  TESTIMONIAL_COMPONENT_STYLES,
+} from '@/sanity/lib/componentStyles'
 
-export type HomePageData = {
-  _updatedAt: string
-  contactUs: {
-    phone: string
-    description: string
-    title: string
-    email: string
-  }
-  _rev: string
-  _type: string
-  whyUs: {
-    heading: string
-    text: string
-    reasons: {
-      reasonTitle: string
-      description: string
-      _key: string
-    }[]
-    gridImages: Image[]
-  }
-  hero: {
-    image: {
-      _type: string
-      asset: {
-        _ref: string
-        _type: string
-      }
-    }
-    header: string
-    subHeader: string
-  }
+type Button = {
+  link: string
+  text: string
+}
+
+type TimelineObj = {
   _id: string
-  services: {
-    heading: string
-    subheadingOne: string
-    subheadingTwo: string
-    services: {
-      _key: string
-      service: string
-      serviceDesc: string
-    }[]
-    floatingTestimonial: HomePageData['testimonials']['testimonials'][0]
-  }
-  companyStats: {
-    heading: string
-    subheading: string
-    stats: {
-      _key: string
-      stat: string
-      statTitle: string
-      statDesc: string
-    }[]
-  }
-  testimonials: {
-    heading: string
-    subheading: string
-    testimonials: {
-      _key: string
-      county: string
-      name: string
-      testimonial: string
-      image: {
-        _type: string
-        asset: {
-          _ref: string
-          _type: string
-        }
-      }
-    }[]
-  }
-  _createdAt: string
-}
-interface Hero {
-  gridImages: Image[]
-  heading: string
-  subheading: string
-}
-
-interface Stat {
-  _key: string
-  stat: string
-  statTitle: string
-}
-
-interface AboutUs {
-  stats: Stat[]
+  name: string
   description: string
-  description2: string
-  title: string
+  date: string
 }
 
-interface Value {
-  valueDesc: string
-  _key: string
-  valueTitle: string
-}
-
-interface Values {
-  heading: string
-  subHeading: string
-  values: Value[]
-}
-
-export interface AboutPageData {
-  _type: string
-  hero: Hero
-  _updatedAt: string
-  bannerImage: Image
-  _createdAt: string
-  _rev: string
+export type Value = {
+  _type: 'value'
   _id: string
-  aboutUs: AboutUs
-  values: Values
+  value: string
+  valueDesc: string
 }
 
-// Services Interface
-
-interface Slug {
-  current: string
-  _type: string
-}
-
-interface Feature {
-  desc: string
-  feature: string
-  _key: string
-}
-
-interface Features {
-  subHeader: string
-  features: Feature[]
-  header: string
-}
-
-interface CallToAction {
-  header: string
-  subHeader: string
-}
-
-interface Question {
-  answer: string
-  question: string
-  _key: string
-}
-
-interface Questions {
-  subHeader: string
-  questions: Question[]
-  header: string
-}
-
-interface Gallery {
-  _key: string
-  image: Image
+type ImageCaption = {
+  _id: string
+  image: string
   caption: string
 }
 
-export interface ServiceInterface {
-  isPopular: boolean
-  _updatedAt: string
-  slug: Slug
-  _type: string
-  shortDesc: string
-  features: Features
-  callToAction: CallToAction
-  _createdAt: string
-  longDesc: string
-  questions: Questions
-  _rev: string
-  title: string
+type Testimonial = {
+  county: string
+  image: string
   _id: string
-  image: Image
-  gallery: Gallery[]
+  name: string
+  testimonial: string
 }
 
-export interface ContactInterface {
+export type CustomBlock = {
+  _type: 'customBlock'
   _id: string
-  phone: string
-  location: string
-  _type: string
+  value: string
   description: string
-  title: string
-  _updatedAt: string
-  email: string
-  _createdAt: string
-  _rev: string
 }
+
+export type Service = {
+  _type: 'service'
+  title: string
+  image: string | null
+  shortDesc: string
+  longDesc: string
+  isPopular: boolean
+  link: string
+  _id: string
+}
+
+type Stat = {
+  _id: string
+  stat: string
+  statDesc: string
+  statShortDesc: string
+}
+
+type Content = {
+  descTwo: string | null
+  header: string | null
+  descOne: string | null
+}
+
+export type HeroType = {
+  _key: string
+  annoucement: null | Button
+  content: Content
+  primaryButton: null | Button
+  secondaryButton: null | Button
+  componentStyle: string
+  mainImage: ImageCaption
+  gallery: ImageCaption[]
+}
+
+export type AboutType = {
+  _key: string
+  componentStyle: string
+  content: Content | null
+  stats: Stat[] | null
+  timeline: TimelineObj[] | null
+}
+
+export type CTAType = {
+  _key: string
+  primaryButton: null | Button
+  secondaryButton: Button | null
+  values: Value[]
+  gallery: ImageCaption[]
+  componentStyle: string
+  content: Content
+}
+
+export type ContactType = {
+  _key: string
+  secondaryButton: Button
+  email: string
+  phoneNum: string
+  location: string
+  componentStyle: string
+  content: Content
+  primaryButton: Button
+}
+
+export type TestimonialsType = {
+  _key: string
+  componentStyle: string
+  content: Content | null
+  testimonials: Testimonial[] | null
+}
+
+export type ServicesType = {
+  _key: string
+  componentStyle: string
+  content: Content | null
+  annoucement: Button | null
+  testimonial: Testimonial | null
+  elements: Array<Service | Value | CustomBlock> | null
+}
+
+export type PageBuilderItem = {
+  hero?: HeroType
+  stats?: AboutType
+  cta?: CTAType
+  contact?: ContactType
+  testimonials?: TestimonialsType
+  services?: ServicesType
+}
+
+export type PageData = {
+  slug: string
+  pageBuilder: PageBuilderItem[]
+}
+
+export type HeroComponentStyle = (typeof HERO_COMPONENT_STYLES)[number]['value']
+export type AboutComponentStyles = (typeof ABOUT_COMPONENT_STYLES)[number]['value']
+export type ServiceComponentStyles = (typeof SERVICES_COMPONENT_STYLES)[number]['value']
+export type TestimonialComponentStyles = (typeof TESTIMONIAL_COMPONENT_STYLES)[number]['value']
+export type CTAComponentStyles = (typeof CTA_COMPONENT_STYLES)[number]['value']
+export type ContactComponentStyles = (typeof CONTACT_COMPONENT_STYLES)[number]['value']
+export type FAQComponentStyles = (typeof FAQ_COMPONENT_STYLES)[number]['value']

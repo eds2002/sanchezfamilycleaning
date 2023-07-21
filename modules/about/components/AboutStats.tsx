@@ -1,4 +1,5 @@
-import { AboutPageData } from '@/modules/interface'
+import React from 'react'
+import { About } from '@/modules/interface'
 
 export default function AboutStats({ data }: { data: AboutPageData['aboutUs'] }) {
   return (

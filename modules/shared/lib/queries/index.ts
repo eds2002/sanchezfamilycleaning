@@ -1,0 +1,6 @@
+export { default as heroGROQ } from './heroGROQ'
+export { default as aboutGROQ } from './aboutGROQ'
+export { default as servicesGROQ } from './servicesGROQ'
+export { default as ctaGROQ } from './ctaGROQ'
+export { default as testimonialsGROQ } from './testimonialsGROQ'
+export { default as contactGROQ } from './contactGROQ'

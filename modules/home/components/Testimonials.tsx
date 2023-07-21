@@ -1,73 +1,18 @@
 'use client'
-import { HomePageData } from '@/modules/interface'
-import { urlForImage } from '@/sanity/lib/image'
+
+/* eslint-disable react/no-array-index-key */
+
+import React from 'react'
+import { TestimonialsType } from '@/modules/interface'
 import Image from 'next/image'
 
-function classNames(...classes: any) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Testimonials({ data }: { data: HomePageData['testimonials'] }) {
-  const featuredTestimonial = {
-    body: data.testimonials[0].testimonial,
-    author: {
-      name: data.testimonials[0].name,
-      county: data.testimonials[0].county,
-      imageUrl: urlForImage(data.testimonials[0].image).url(),
-    },
-  }
-  const testimonials = [
-    [
-      [
-        {
-          body: data.testimonials[1].testimonial,
-          author: {
-            name: data.testimonials[1].name,
-            county: data.testimonials[1].county,
-            imageUrl: urlForImage(data.testimonials[1].image).url(),
-          },
-        },
-        // More testimonials...
-      ],
-      [
-        {
-          body: data.testimonials[2].testimonial,
-          author: {
-            name: data.testimonials[2].name,
-            county: data.testimonials[2].county,
-            imageUrl: urlForImage(data.testimonials[2].image).url(),
-          },
-        },
-        // More testimonials...
-      ],
-    ],
-    [
-      [
-        {
-          body: data.testimonials[3].testimonial,
-          author: {
-            name: data.testimonials[3].name,
-            county: data.testimonials[3].county,
-            imageUrl: urlForImage(data.testimonials[3].image).url(),
-          },
-        },
-        // More testimonials...
-      ],
-      [
-        {
-          body: data.testimonials[4].testimonial,
-          author: {
-            name: data.testimonials[4].name,
-            county: data.testimonials[4].county,
-            imageUrl: urlForImage(data.testimonials[4].image).url(),
-          },
-        },
-        // More testimonials...
-      ],
-    ],
-  ]
+function GaussianBlur() {
   return (
-    <div className="relative pt-24 pb-32 bg-white isolate sm:pt-32">
+    <>
       <div
         className="absolute inset-x-0 overflow-hidden -translate-y-1/2 top-1/2 -z-10 transform-gpu opacity-30 blur-3xl"
         aria-hidden="true"
@@ -92,10 +37,76 @@ export default function Testimonials({ data }: { data: HomePageData['testimonial
           }}
         />
       </div>
+    </>
+  )
+}
+
+export default function Testimonials({ data }: { data: TestimonialsType }) {
+  const featuredTestimonial = {
+    body: data.testimonials[0]?.testimonial,
+    author: {
+      name: data.testimonials[0]?.name,
+      county: data.testimonials[0]?.county,
+      imageUrl: data.testimonials[0]?.image,
+    },
+  }
+  const testimonials = [
+    [
+      [
+        {
+          body: data.testimonials[1]?.testimonial,
+          author: {
+            name: data.testimonials[1]?.name,
+            county: data.testimonials[1]?.county,
+            imageUrl: data.testimonials[1]?.image,
+          },
+        },
+        // More testimonials...
+      ],
+      [
+        {
+          body: data.testimonials[2]?.testimonial,
+          author: {
+            name: data.testimonials[2]?.name,
+            county: data.testimonials[2]?.county,
+            imageUrl: data.testimonials[2]?.image,
+          },
+        },
+        // More testimonials...
+      ],
+    ],
+    [
+      [
+        {
+          body: data.testimonials[3]?.testimonial,
+          author: {
+            name: data.testimonials[3]?.name,
+            county: data.testimonials[3]?.county,
+            imageUrl: data.testimonials[3]?.image,
+          },
+        },
+        // More testimonials...
+      ],
+      [
+        {
+          body: data.testimonials[4]?.testimonial,
+          author: {
+            name: data.testimonials[4]?.name,
+            county: data.testimonials[4]?.county,
+            imageUrl: data.testimonials[4]?.image,
+          },
+        },
+        // More testimonials...
+      ],
+    ],
+  ]
+  return (
+    <div className="relative pt-24 pb-32 isolate sm:pt-32">
+      <GaussianBlur />
       <div className="px-6 mx-auto max-w-7xl lg:px-8">
         <div className="max-w-xl mx-auto text-center">
-          <h2 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Testimonials</h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data.heading}</p>
+          <h2 className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">{data.content.header}</h2>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data.content.descOne}</p>
         </div>
         <div className="grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 mx-auto mt-16 text-sm leading-6 text-gray-900 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
           <figure className="hidden col-span-2 sm:block sm:rounded-2xl sm:bg-white sm:shadow-lg sm:ring-1 sm:ring-gray-900/5 xl:col-start-2 xl:row-end-1">

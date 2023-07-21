@@ -91,8 +91,8 @@ const contactUs: SchemaTypeDefinition = {
 }
 
 const services: SchemaTypeDefinition = {
-  name: 'services',
-  title: 'Services',
+  name: 'servicesComponent',
+  title: 'Services Component',
   type: 'object',
   description: 'The services that the company provides',
   fields: [
@@ -123,57 +123,16 @@ const services: SchemaTypeDefinition = {
       validation: (rule: Rule) => rule.max(3).required().min(3),
       of: [
         {
-          type: 'object',
-          fields: [
-            {
-              name: 'service',
-              title: 'Service',
-              type: 'string',
-              description: 'The name of the service',
-              validation: (rule) => rule.required(),
-            },
-            {
-              name: 'serviceDesc',
-              title: 'Service Description',
-              type: 'string',
-              description: 'A short description of the service',
-              validation: (rule) => rule.required(),
-            },
-          ],
+          type: 'reference',
+          to: [{ type: 'service' }],
         },
       ],
     },
     {
       name: 'floatingTestimonial',
       title: 'Floating Testimonial',
-      type: 'object',
-      description: 'For the floating testimonial on the services section.',
-      fields: [
-        {
-          name: 'name',
-          title: 'Name',
-          type: 'string',
-          description: 'Reviewer Name',
-        },
-        {
-          name: 'testimonial',
-          title: 'Testimonial',
-          type: 'string',
-          description: 'The testimonial',
-        },
-        {
-          name: 'county',
-          title: 'County',
-          type: 'string',
-          description: 'The county of the reviewer',
-        },
-        {
-          name: 'image',
-          title: 'Image',
-          type: 'image',
-          description: 'The image of the reviewer',
-        },
-      ],
+      type: 'reference',
+      to: [{ type: 'testimonials' }],
     },
   ],
 }
@@ -208,65 +167,11 @@ const stats: SchemaTypeDefinition = {
   name: 'companyStats',
   title: 'Company Stats',
   description: 'The stats that appear on the home page',
-  type: 'object',
-  fields: [
+  type: 'array',
+  of: [
     {
-      name: 'heading',
-      title: 'Heading',
-      type: 'string',
-      description: 'The heading of the stats',
-      validation: (rule) => rule.required(),
-    },
-    {
-      name: 'subheading',
-      title: 'Sub Heading',
-      type: 'string',
-      description: 'The sub heading of the stats',
-      validation: (rule) => rule.required(),
-    },
-    {
-      name: 'stats',
-      title: 'Stats',
-      type: 'array',
-      validation: (rule: Rule) => rule.max(4).required().min(4),
-      of: [
-        {
-          type: 'object',
-          fields: [
-            {
-              name: 'statTitle',
-              title: 'Title',
-              type: 'string',
-              description: 'The title of the stat',
-              validation: (rule: Rule) => rule.required(),
-            },
-            {
-              name: 'statDesc',
-              title: 'Description',
-              type: 'string',
-              description: 'A short description of the stat',
-              validation: (rule: Rule) => rule.required(),
-            },
-            {
-              name: 'stat',
-              title: 'Stat',
-              type: 'string',
-              description: 'Stat number',
-              validation: (Rule) =>
-                Rule.custom((field: string, context) => {
-                  if (field === undefined) return 'Required'
-
-                  const split = field.split('').map((char: string) => Number(char))
-                  const doesNotIncludeNum = split.every((char: (typeof split)[number]) => isNaN(char))
-                  if (doesNotIncludeNum) {
-                    return 'Must include a number'
-                  }
-                  return true
-                }),
-            },
-          ],
-        },
-      ],
+      type: 'reference',
+      to: [{ type: 'stat' }],
     },
   ],
 }
