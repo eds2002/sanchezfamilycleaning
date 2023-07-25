@@ -9,9 +9,6 @@ export default function WithTestimonialAndImage({ data }: { data: ServicesType }
     () => data.elements?.filter((e) => e._type === 'service'),
     [data],
   ) as () => Service[]
-
-  console.log(formatedData())
-
   return (
     <section>
       {formatedData()?.map((element: Service) => (

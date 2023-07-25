@@ -59,7 +59,6 @@ export default function FormWithTestimonial({ data }: { data: ContactType }) {
     event.preventDefault()
     const { phoneNumber, ...otherValues } = formData
     const values = Object.values(otherValues)
-    console.log(values)
     // If any of the values are empty, return
     if (values.some((value) => value === '')) {
       // Show an error notification

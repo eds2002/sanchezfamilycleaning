@@ -94,7 +94,6 @@ function Custom({ customBlock }: { customBlock: CustomBlock }) {
 }
 
 function ValueBlock({ value }: { value: Value }) {
-  console.log(value)
   const Icon = DynamicFontAwesomeIcon(value.icon ?? ({} as any))
   return (
     <div key={value._id} className="flex flex-col">
