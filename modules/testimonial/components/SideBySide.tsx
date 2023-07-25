@@ -18,7 +18,7 @@ export default function SideBySide({ data }: { data: TestimonialsType }) {
                 </p>
               </blockquote>
               <figcaption className="flex items-center mt-10 gap-x-6">
-                <div className="relative rounded-full h-14 w-14 bg-gray-50">
+                <div className="relative overflow-hidden rounded-full h-14 w-14 bg-gray-50">
                   <Image
                     src={data.testimonials?.[0].image ?? ''}
                     alt={`Image of ${data.testimonials?.[0].name}`}

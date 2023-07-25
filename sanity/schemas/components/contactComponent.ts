@@ -8,9 +8,13 @@ export default defineType({
   type: 'object',
   icon: Box,
   preview: {
-    prepare() {
+    select: {
+      componentStyle: 'componentStyle',
+    },
+    prepare({ componentStyle }) {
       return {
         title: 'Contact',
+        subtitle: componentStyle,
       }
     },
   },
@@ -112,6 +116,12 @@ export default defineType({
       title: 'Location',
       type: 'reference',
       to: [{ type: 'company' }],
+    }),
+    defineField({
+      name: 'testimonial',
+      title: 'Testimonial',
+      type: 'reference',
+      to: [{ type: 'testimonials' }],
     }),
   ],
 })

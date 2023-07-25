@@ -23,6 +23,13 @@ export default groq`
       "email":email->title,
       "phoneNum": phoneNum->title,
       "location":location->title,
+      "testimonial":testimonial->{
+        _id,
+        name,
+        testimonial,
+        county,
+        "image": image.asset->url,
+      },
     }
   }
 `

@@ -7,6 +7,7 @@ _type == 'faq'=>{
     componentStyle,
     content,
     faq,
+    "supportEmail":supportEmail->title
   }
 }
 `

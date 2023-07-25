@@ -11,7 +11,7 @@ export default function Timeline({ data }: { data: AboutType }) {
   }))
 
   return (
-    <div className="py-24 bg-white sm:py-32">
+    <div className="py-16 bg-white sm:py-32">
       <div className="px-6 mx-auto max-w-7xl lg:px-8">
         <div className="grid max-w-2xl grid-cols-1 gap-8 mx-auto overflow-hidden lg:mx-0 lg:max-w-none lg:grid-cols-4">
           {timeline?.map((item) => (

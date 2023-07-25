@@ -9,9 +9,13 @@ export default defineType({
   type: 'object',
   icon: Box,
   preview: {
-    prepare() {
+    select: {
+      componentStyle: 'componentStyle',
+    },
+    prepare({ componentStyle }) {
       return {
-        title: 'Services',
+        title: 'Service',
+        subtitle: componentStyle,
       }
     },
   },
@@ -31,6 +35,7 @@ export default defineType({
       title: 'Annoucement',
       type: 'object',
       description: 'Annoucement bar on the component',
+      hidden: ({ parent }) => parent.componentStyle === 'withTestimonialAndImage',
       fields: [
         defineField({
           name: 'text',
@@ -55,6 +60,7 @@ export default defineType({
       title: 'Content',
       type: 'object',
       description: 'Content on the component',
+      hidden: ({ parent }) => parent.componentStyle === 'withTestimonialAndImage',
       fields: [
         defineField({
           name: 'header',
@@ -81,6 +87,7 @@ export default defineType({
       title: 'Primary Button',
       type: 'object',
       description: 'Main button on the hero component',
+      hidden: ({ parent }) => parent.componentStyle === 'withTestimonialAndImage',
       fields: [
         defineField({
           name: 'text',
@@ -103,6 +110,7 @@ export default defineType({
       title: 'Secondary Button',
       type: 'object',
       description: 'Secondary button on the hero component',
+      hidden: ({ parent }) => parent.componentStyle === 'withTestimonialAndImage',
       fields: [
         defineField({
           name: 'text',
@@ -125,20 +133,53 @@ export default defineType({
       title: 'Elements',
       type: 'array',
       of: [
-        { type: 'reference', to: [{ type: 'service' }, { type: 'value' }] },
+        defineField({
+          type: 'object',
+          name: 'blockRef',
+          title: 'Block Reference',
+          icon: () => '🔗' as any,
+          fields: [
+            {
+              title: 'Icon',
+              name: 'icon',
+              type: 'iconPicker',
+              options: {
+                providers: ['fa'],
+                outputFormat: 'react',
+              },
+            },
+            {
+              name: 'element',
+              title: 'Element',
+              type: 'reference',
+              to: [{ type: 'service' }, { type: 'value' }],
+            },
+          ],
+        }),
         {
           name: 'customBlock',
           title: 'Create Element',
           type: 'object',
           icon: () => '✏️' as any,
           fields: [
+            {
+              title: 'Icon',
+              name: 'icon',
+              type: 'iconPicker',
+              options: {
+                providers: ['fa'],
+                outputFormat: 'react',
+              },
+            },
             { name: 'value', title: 'Value', type: 'string' },
             { name: 'description', title: 'Description', type: 'text' },
+            { name: 'link', title: 'Reference To', type: 'reference', to: [{ type: 'page' }, { type: 'service' }] },
           ],
         },
       ],
     }),
     defineField({
+      hidden: ({ parent }) => parent.componentStyle === 'withTestimonialAndImage',
       name: 'testimonial',
       title: 'Testimonial',
       type: 'reference',

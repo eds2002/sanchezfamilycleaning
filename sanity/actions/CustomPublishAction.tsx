@@ -3,11 +3,23 @@
 import { useState, useEffect } from 'react'
 import { useDocumentOperation } from 'sanity'
 import slugify from 'slugify'
+import { groq } from 'next-sanity'
 import { client } from '../lib/client'
+
+const SCHEMAS_WITH_CUSTOM_PUBLISH_ACTION = ['page']
+
+function shouldDisplayCustomPublishAction(type: string) {
+  // Replace with your condition
+  // For instance, if you want the action to appear only for 'service' and 'page' schemas:
+  return SCHEMAS_WITH_CUSTOM_PUBLISH_ACTION.includes(type)
+}
 
 async function getSlug(reference: string, fallback: string) {
   if (reference) {
-    const refDoc = await client.fetch(`*[_id == "${reference}"][0]{"slug": slug.current}`)
+    const refDoc = await client.fetch(groq`*[_id == "${reference}"][0]{"slug": slug.current,_type}`)
+    if (refDoc._type === 'service') {
+      return `service/${refDoc.slug}`
+    }
     return refDoc.slug
   }
   return slugify(fallback, { lower: true })
@@ -15,7 +27,7 @@ async function getSlug(reference: string, fallback: string) {
 
 export default function CustomPublishAction(props: any) {
   const { patch, publish } = useDocumentOperation(props.id, props.type)
-  const [slug, setSlug] = useState('')
+  const [slug, setSlug] = useState(null)
   const [isPublishing, setIsPublishing] = useState(false)
 
   useEffect(() => {
@@ -26,6 +38,7 @@ export default function CustomPublishAction(props: any) {
     }
 
     // Handle getting the slug from reference
+    if (!shouldDisplayCustomPublishAction(props.type)) return
     async function getSlugFn() {
       if (props.draft) {
         const s = await getSlug(props?.draft?.reference?._ref, props?.draft?.title)
@@ -42,7 +55,10 @@ export default function CustomPublishAction(props: any) {
       setIsPublishing(true)
 
       // Set slug
-      patch.execute([{ set: { slug: { current: slug ?? props.title } } }])
+
+      if (shouldDisplayCustomPublishAction(props.type)) {
+        patch.execute([{ set: { slug: { current: slug ?? props.title } } }])
+      }
 
       // Perform the publish
       publish.execute()

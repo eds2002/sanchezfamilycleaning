@@ -3,10 +3,31 @@ import {
   CONTACT_COMPONENT_STYLES,
   CTA_COMPONENT_STYLES,
   FAQ_COMPONENT_STYLES,
+  GALLERY_COMPONENT_STYLES,
   HERO_COMPONENT_STYLES,
   SERVICES_COMPONENT_STYLES,
   TESTIMONIAL_COMPONENT_STYLES,
 } from '@/sanity/lib/componentStyles'
+
+type Feature = {
+  _key: string
+  feature: string
+  desc: string
+}
+
+type FeatureObject = {
+  header: string
+  subHeader: string
+  features: Feature[]
+}
+
+type Icon =
+  | {
+      provider: string
+      _type: string
+      name: string
+    }
+  | undefined
 
 type Button = {
   link: string
@@ -23,6 +44,7 @@ type TimelineObj = {
 export type Value = {
   _type: 'value'
   _id: string
+  icon: Icon
   value: string
   valueDesc: string
 }
@@ -44,6 +66,7 @@ type Testimonial = {
 export type CustomBlock = {
   _type: 'customBlock'
   _id: string
+  icon: Icon
   value: string
   description: string
 }
@@ -51,12 +74,16 @@ export type CustomBlock = {
 export type Service = {
   _type: 'service'
   title: string
-  image: string | null
+  image: ImageCaption
+  icon: Icon
   shortDesc: string
   longDesc: string
   isPopular: boolean
   link: string
   _id: string
+  features: FeatureObject[]
+  imageUrl: string
+  testimonial: Testimonial
 }
 
 type Stat = {
@@ -110,6 +137,7 @@ export type ContactType = {
   componentStyle: string
   content: Content
   primaryButton: Button
+  testimonial: Testimonial
 }
 
 export type TestimonialsType = {
@@ -128,6 +156,27 @@ export type ServicesType = {
   elements: Array<Service | Value | CustomBlock> | null
 }
 
+type FAQData = {
+  _key: string
+  question: string
+  answer: string
+}
+
+export type FAQType = {
+  _key: string
+  componentStyle: string
+  content: Content | null
+  faq: FAQData[]
+  supportEmail: string
+}
+
+export type GalleryType = {
+  _key: string
+  componentStyle: string
+  content: Content | null
+  images: ImageCaption[]
+}
+
 export type PageBuilderItem = {
   hero?: HeroType
   stats?: AboutType
@@ -135,6 +184,8 @@ export type PageBuilderItem = {
   contact?: ContactType
   testimonials?: TestimonialsType
   services?: ServicesType
+  faq?: FAQType
+  gallery?: GalleryType
 }
 
 export type PageData = {
@@ -149,3 +200,24 @@ export type TestimonialComponentStyles = (typeof TESTIMONIAL_COMPONENT_STYLES)[n
 export type CTAComponentStyles = (typeof CTA_COMPONENT_STYLES)[number]['value']
 export type ContactComponentStyles = (typeof CONTACT_COMPONENT_STYLES)[number]['value']
 export type FAQComponentStyles = (typeof FAQ_COMPONENT_STYLES)[number]['value']
+export type GalleryComponentStyles = (typeof GALLERY_COMPONENT_STYLES)[number]['value']
+
+interface LinkData {
+  title: string
+  slug: string
+  shortDesc: string | null
+  isPopular?: boolean // This is optional because it doesn't appear in all the links
+  _type: 'service' | 'page'
+  _id: string
+}
+
+interface Item {
+  text: string
+  linkData: LinkData[]
+}
+
+export interface Navigation {
+  _id: string
+  title: string
+  items: Item[]
+}

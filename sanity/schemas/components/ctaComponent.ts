@@ -8,9 +8,13 @@ export default defineType({
   type: 'object',
   icon: Box,
   preview: {
-    prepare() {
+    select: {
+      componentStyle: 'componentStyle',
+    },
+    prepare({ componentStyle }) {
       return {
-        title: 'Call to Action',
+        title: 'Call to action',
+        subtitle: componentStyle,
       }
     },
   },

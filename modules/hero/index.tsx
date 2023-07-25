@@ -1,7 +1,9 @@
 import React from 'react'
 import { HeroType, HeroComponentStyle } from '../interface'
-import SimpleCentered from './SimpleCentered'
-import WithImageTiles from './WithImageTiles'
+import SimpleCentered from './components/SimpleCentered'
+import WithImageTiles from './components/WithImageTiles'
+import SplitWithImage from './components/SplitWithImage'
+import WithOffsetImage from './components/WithOffsetImage'
 
 export default function Hero({ data, style }: { data: HeroType; style: HeroComponentStyle }) {
   switch (style) {
@@ -9,7 +11,11 @@ export default function Hero({ data, style }: { data: HeroType; style: HeroCompo
       return <SimpleCentered data={data} />
     case 'withImageTiles':
       return <WithImageTiles data={data} />
+    case 'splitWithImage':
+      return <SplitWithImage data={data} />
+    case 'withOffsetImage':
+      return <WithOffsetImage data={data} />
     default:
-      return <SimpleCentered data={data} />
+      return null
   }
 }

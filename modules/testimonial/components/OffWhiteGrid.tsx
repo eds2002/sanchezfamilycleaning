@@ -1,5 +1,6 @@
 import { TestimonialsType } from '@/modules/interface'
 import React from 'react'
+import Image from 'next/image'
 
 const mockUpTestimonials = [
   {
@@ -116,7 +117,14 @@ export default function OffWhiteGrid({ data }: { data: TestimonialsType }) {
                     <p>{`“${testimonial.body}”`}</p>
                   </blockquote>
                   <figcaption className="flex items-center mt-6 gap-x-4">
-                    <img className="w-10 h-10 rounded-full bg-gray-50" src={testimonial.author.imageUrl} alt="" />
+                    <div className="relative w-10 h-10 overflow-hidden rounded-full bg-gray-50">
+                      <Image
+                        src={testimonial.author.imageUrl}
+                        alt={`Image of ${testimonial.author}`}
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </div>
                     <div>
                       <div className="font-semibold text-gray-900">{testimonial.author.name}</div>
                       <div className="text-gray-600">{`@${testimonial.author.county}`}</div>

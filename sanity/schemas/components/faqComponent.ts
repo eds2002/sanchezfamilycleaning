@@ -8,9 +8,13 @@ export default defineType({
   type: 'object',
   icon: Box,
   preview: {
-    prepare() {
+    select: {
+      componentStyle: 'componentStyle',
+    },
+    prepare({ componentStyle }) {
       return {
-        title: 'FAQ',
+        title: 'Frequently Asked Questions',
+        subtitle: componentStyle,
       }
     },
   },
@@ -50,6 +54,13 @@ export default defineType({
       options: {
         collapsible: true,
       },
+    }),
+    defineField({
+      name: 'supportEmail',
+      title: 'Support Email',
+      type: 'reference',
+      description: 'The email used where users can send questions to.',
+      to: [{ type: 'company' }],
     }),
     defineField({
       name: 'faq',

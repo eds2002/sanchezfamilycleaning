@@ -14,15 +14,30 @@ export const ABOUT_COMPONENT_STYLES = [
 ] as const
 export const SERVICES_COMPONENT_STYLES = [
   { title: 'Description and Highlighted Features', value: 'descAndHighlightedFeatures' },
-  { title: 'Simple three column with large icons', value: 'simpleThreeColumnWithLargeIcons' },
-  { title: 'With Testimonial and right image', value: 'withTestimonialAndRightImage' },
   { title: 'Offset with feature list', value: 'offsetWithFeatureList' },
+  { title: 'Three Column With Large Icons', value: 'threeColumnWithLargeIcons' },
+  { title: 'With testimonial and image', value: 'withTestimonialAndImage' },
 ] as const
 export const TESTIMONIAL_COMPONENT_STYLES = [
   { title: 'Side-by-side', value: 'sideBySide' },
   { title: 'Grid', value: 'grid' },
   { title: 'Off-white grid', value: 'offWhiteGrid' },
 ] as const
-export const CTA_COMPONENT_STYLES = [{ title: 'Style One', value: 'styleOne' }] as const
-export const CONTACT_COMPONENT_STYLES = [{ title: 'Style One', value: 'styleOne' }] as const
-export const FAQ_COMPONENT_STYLES = [{ title: 'Style One', value: 'styleOne' }] as const
+export const CTA_COMPONENT_STYLES = [
+  { title: 'Stacked Left', value: 'stackedLeft' },
+  { title: 'Stacked Center', value: 'stackedCenter' },
+  { title: 'Stacked Center w/ Brand', value: 'stackedCenterWithBrand' },
+] as const
+export const CONTACT_COMPONENT_STYLES = [
+  { title: 'Split With Pattern', value: 'splitWithPattern' },
+  { title: 'Form with testimonial', value: 'formWithTestimonial' },
+] as const
+export const FAQ_COMPONENT_STYLES = [
+  { title: 'Offset with supporting text', value: 'offsetWithSupportingText' },
+  { title: 'Side by side', value: 'sideBySide' },
+  { title: 'Three column with supporting text', value: 'threeColumnWithSupportingText' },
+] as const
+export const GALLERY_COMPONENT_STYLES = [
+  { title: 'Masonry', value: 'masonry' },
+  { title: 'Single Image Banner', value: 'singleImageBanner' },
+] as const

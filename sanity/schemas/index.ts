@@ -1,27 +1,35 @@
 /* eslint-disable import/prefer-default-export */
-import about from './aboutPage'
-import company from './company'
+import company from './objects/company'
+import page from './components/pageType'
 import contactComponent from './components/contactComponent'
 import ctaComponent from './components/ctaComponent'
 import heroType from './components/heroType'
 import servicesComponent from './components/servicesComponent'
 import aboutComponent from './components/aboutComponent'
 import testimonialsComponent from './components/testimonialsComponent'
-import gallery from './gallery'
-import page from './components/pageType'
-import service from './service'
-import stats from './stats'
-import testimonials from './testimonials'
-import values from './values'
 import faqComponent from './components/faqComponent'
+import service from './objects/service'
+import stats from './objects/stats'
+import testimonials from './objects/testimonials'
+import values from './objects/values'
+import gallery from './objects/gallery'
+import navigation from './documents/navigation'
+import link from './objects/link'
+import navItem from './objects/navItem'
+import galleryComponent from './components/galleryComponent'
 
 export const schemaTypes = [
-  about,
   service,
   stats,
   company,
   testimonials,
+  values,
+  gallery,
+
   // components
+  navigation,
+  link,
+  navItem,
   page,
   heroType,
   ctaComponent,
@@ -30,6 +38,5 @@ export const schemaTypes = [
   servicesComponent,
   contactComponent,
   faqComponent,
-  values,
-  gallery,
+  galleryComponent,
 ]

@@ -3,9 +3,9 @@ import { AboutType } from '@/modules/interface'
 import React from 'react'
 
 const stats = [
-  { _key: 1, statShortDesc: 'Transactions every 24 hours', stat: '44 million' },
-  { _key: 2, statShortDesc: 'Assets under holding', stat: '$119 trillion' },
-  { _key: 3, statShortDesc: 'New users annually', stat: '46,000' },
+  { _id: 1, statShortDesc: 'Transactions every 24 hours', stat: '44 million' },
+  { _id: 2, statShortDesc: 'Assets under holding', stat: '$119 trillion' },
+  { _id: 3, statShortDesc: 'New users annually', stat: '46,000' },
 ]
 
 export default function WithDescription({ data }: { data: AboutType }) {
@@ -29,8 +29,8 @@ export default function WithDescription({ data }: { data: AboutType }) {
             </div>
             <div className="lg:flex lg:flex-auto lg:justify-center">
               <dl className="w-64 space-y-8 xl:w-80">
-                {stats.map((stat) => (
-                  <div key={stat._key} className="flex flex-col-reverse gap-y-4">
+                {(data.stats ?? stats).map((stat) => (
+                  <div key={stat._id} className="flex flex-col-reverse gap-y-4">
                     <dt className="text-base leading-7 text-gray-600">{stat.statShortDesc}</dt>
                     <dd className="text-5xl font-semibold tracking-tight text-gray-900">{stat.stat}</dd>
                   </div>

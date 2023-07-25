@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react'
 import { CheckIcon } from '@heroicons/react/20/solid'
-import { AboutType, CustomBlock, Service, ServicesType, Value } from '@/modules/interface'
+import { CustomBlock, Service, ServicesType, Value } from '@/modules/interface'
 
 const features = [
   {

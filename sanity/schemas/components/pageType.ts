@@ -18,16 +18,38 @@ export default defineType({
       description: 'This will be the slug of the page. This changes depending on the title / reference.',
     }),
     defineField({
+      name: 'metadata',
+      title: 'Metadata',
+      type: 'object',
+      description: 'Appears in the head of the page.',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+          description: 'The title of the page.',
+        }),
+        defineField({
+          name: 'description',
+          title: 'Description',
+          type: 'text',
+          description: 'The description of the page.',
+        }),
+        defineField({
+          name: 'keywords',
+          title: 'Keywords',
+          type: 'array',
+          of: [{ type: 'string' }],
+          description: 'The keywords of the page.',
+        }),
+      ],
+      options: {
+        collapsible: true,
+      },
+    }),
+    defineField({
       name: 'title',
       type: 'string',
-      validation: (rule) =>
-        rule.required().custom((string: string | undefined) => {
-          if (!string) return false
-          if (string.split(' ').length > 1) {
-            return 'Keep the title one word.'
-          }
-          return true
-        }),
     }),
     defineField({
       name: 'reference',
@@ -69,6 +91,10 @@ export default defineType({
         defineArrayMember({
           name: 'faq',
           type: 'faqComponent',
+        }),
+        defineArrayMember({
+          name: 'gallery',
+          type: 'galleryComponent',
         }),
       ],
     }),

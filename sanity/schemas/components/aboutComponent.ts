@@ -1,16 +1,20 @@
 import { Box } from 'lucide-react'
-import { defineField } from 'sanity'
+import { defineField, defineType } from 'sanity'
 import { ABOUT_COMPONENT_STYLES } from '../../lib/componentStyles'
 
-export default {
+export default defineType({
   name: 'aboutComponent',
   title: 'About Component',
   type: 'object',
   icon: Box,
   preview: {
-    prepare() {
+    select: {
+      componentStyle: 'componentStyle',
+    },
+    prepare({ componentStyle }) {
       return {
         title: 'About',
+        subtitle: componentStyle,
       }
     },
   },
@@ -86,4 +90,4 @@ export default {
       ],
     }),
   ],
-}
+})
