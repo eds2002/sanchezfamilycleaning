@@ -5,6 +5,8 @@ import { CustomBlock, Service, ServicesType, Value } from '@/modules/interface'
 import { InboxIcon, TrashIcon, UsersIcon } from '@heroicons/react/24/outline'
 import DynamicFontAwesomeIcon from '@/modules/shared/utils/DynamicFontAwesomeIcon'
 import Link from 'next/link'
+import GaussianBlur from '@/modules/shared/components/GaussianBlur'
+import GridLines from '@/modules/shared/components/GridLines'
 
 const features = [
   {
@@ -37,7 +39,7 @@ function Mock({ feature }: { feature: (typeof features)[0] }) {
   return (
     <div key={feature.name} className="flex flex-col">
       <dt className="text-base font-semibold leading-7 text-gray-900">
-        <div className="flex items-center justify-center w-10 h-10 mb-6 bg-indigo-600 rounded-lg">
+        <div className="flex items-center justify-center w-10 h-10 mb-6 bg-green-600 rounded-lg">
           <feature.icon className="w-6 h-6 text-white" aria-hidden="true" />
         </div>
         {feature.name}
@@ -45,7 +47,7 @@ function Mock({ feature }: { feature: (typeof features)[0] }) {
       <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-600">
         <p className="flex-auto">{feature.description}</p>
         <p className="mt-6">
-          <a href={feature.href} className="text-sm font-semibold leading-6 text-indigo-600">
+          <a href={feature.href} className="text-sm font-semibold leading-6 text-green-600">
             Learn more <span aria-hidden="true">→</span>
           </a>
         </p>
@@ -59,7 +61,7 @@ function ServiceBlock({ service }: { service: Service }) {
   return (
     <div key={service._id} className="flex flex-col">
       <dt className="text-base font-semibold leading-7 text-gray-900">
-        <div className="flex items-center justify-center w-10 h-10 mb-6 bg-indigo-600 rounded-lg">
+        <div className="flex items-center justify-center w-10 h-10 mb-6 bg-green-600 rounded-lg">
           <Icon className="w-6 h-6 text-white" aria-hidden="true" />
         </div>
         {service.title}
@@ -67,7 +69,7 @@ function ServiceBlock({ service }: { service: Service }) {
       <dd className="flex flex-col flex-auto mt-1 text-base leading-7 text-gray-600">
         <p className="flex-auto">{service.longDesc}</p>
         <p className="mt-6">
-          <Link href={service.link} className="text-sm font-semibold leading-6 text-indigo-600">
+          <Link href={service.link} className="text-sm font-semibold leading-6 text-green-600">
             Learn more <span aria-hidden="true">→</span>
           </Link>
         </p>
@@ -81,7 +83,7 @@ function Custom({ customBlock }: { customBlock: CustomBlock }) {
   return (
     <div key={customBlock._id} className="flex flex-col">
       <dt className="text-base font-semibold leading-7 text-gray-900">
-        <div className="flex items-center justify-center w-10 h-10 mb-6 bg-indigo-600 rounded-lg">
+        <div className="flex items-center justify-center w-10 h-10 mb-6 bg-green-600 rounded-lg">
           <Icon className="w-6 h-6 text-white" aria-hidden="true" />
         </div>
         {customBlock.value}
@@ -98,7 +100,7 @@ function ValueBlock({ value }: { value: Value }) {
   return (
     <div key={value._id} className="flex flex-col">
       <dt className="text-base font-semibold leading-7 text-gray-900">
-        <div className="flex items-center justify-center w-10 h-10 mb-6 bg-indigo-600 rounded-lg">
+        <div className="flex items-center justify-center w-10 h-10 mb-6 bg-green-600 rounded-lg">
           <Icon className="w-6 h-6 text-white" aria-hidden="true" />
         </div>
         {value.value}
@@ -112,7 +114,9 @@ function ValueBlock({ value }: { value: Value }) {
 
 export default function ThreeColumnWithLargeIcons({ data }: { data: ServicesType }) {
   return (
-    <div className="py-24 bg-white sm:py-32">
+    <div className="relative py-24 bg-white sm:py-32 isolate">
+      <GaussianBlur />
+      <GridLines />
       <div className="px-6 mx-auto max-w-7xl lg:px-8">
         <div className="max-w-2xl mx-auto lg:mx-0">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">

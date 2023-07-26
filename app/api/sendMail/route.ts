@@ -10,14 +10,14 @@ export async function POST(request: Request) {
     const req = await request.json()
     const { firstName, email, message } = req
     await resend.emails.send({
-      from: 'eduardo@sanchezfamilycleaning.com',
+      from: 'hello@sanchezfamilycleaning.com',
       to: [email],
       subject: `Thanks for Reaching Out, ${firstName}!`,
       react: ConfirmationEmail({ firstName }),
     })
 
     await resend.emails.send({
-      from: 'eduardo@sanchezfamilycleaning.com',
+      from: 'hello@sanchezfamilycleaning.com',
       to: ['es23jr@gmail.com'],
       subject: `A user has messaged you!`,
       react: OwnerNotify({ firstName, email, message }),

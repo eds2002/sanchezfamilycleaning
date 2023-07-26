@@ -13,7 +13,7 @@ export default function SplitWithImage({ data }: { data: HeroType }) {
               {data.annoucement && (
                 <div className="relative px-3 py-1 text-sm leading-6 text-gray-500 rounded-full ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                   {data.annoucement.text}{' '}
-                  <Link href={data.annoucement.link ?? '/'} className="font-semibold text-indigo-600 whitespace-nowrap">
+                  <Link href={data.annoucement.link ?? '/'} className="font-semibold text-green-600 whitespace-nowrap">
                     <span className="absolute inset-0" aria-hidden="true" />
                     Learn more <span aria-hidden="true">&rarr;</span>
                   </Link>
@@ -28,7 +28,7 @@ export default function SplitWithImage({ data }: { data: HeroType }) {
               {data.primaryButton && (
                 <Link
                   href={data.primaryButton.link}
-                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="rounded-md bg-green-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
                 >
                   {data.primaryButton.text}
                 </Link>

@@ -162,8 +162,8 @@ export default function FormWithTestimonial({ data }: { data: ContactType }) {
                     onChange={onChange}
                     autoComplete="given-name"
                     required
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    invalidCN="invalid:ring-red-300 valid:ring-indigo-600"
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                    invalidCN="invalid:ring-red-300 valid:ring-green-600"
                     placeholder="John"
                   />
                 </div>
@@ -180,8 +180,8 @@ export default function FormWithTestimonial({ data }: { data: ContactType }) {
                     required
                     id="last-name"
                     autoComplete="family-name"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    invalidCN="invalid:ring-red-300 valid:ring-indigo-600"
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                    invalidCN="invalid:ring-red-300 valid:ring-green-600"
                     placeholder="Doe"
                   />
                 </div>
@@ -198,8 +198,8 @@ export default function FormWithTestimonial({ data }: { data: ContactType }) {
                     name="email"
                     id="email"
                     autoComplete="email"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    invalidCN="invalid:ring-red-300 valid:ring-indigo-600"
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                    invalidCN="invalid:ring-red-300 valid:ring-green-600"
                     required
                     placeholder="john@gmail.com"
                   />
@@ -221,8 +221,8 @@ export default function FormWithTestimonial({ data }: { data: ContactType }) {
                     id="phone-number"
                     autoComplete="tel"
                     pattern="^(\+?\d{1,4}[\s-])?(?!0+\s+,?$)\d{10}\s*,?$"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    invalidCN="invalid:ring-red-300 valid:ring-indigo-600"
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                    invalidCN="invalid:ring-red-300 valid:ring-green-600"
                     placeholder="(555) 234-5678"
                   />
                 </div>
@@ -238,8 +238,8 @@ export default function FormWithTestimonial({ data }: { data: ContactType }) {
                     value={formData.message}
                     id="message"
                     required
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    invalidCN="invalid:ring-red-300 valid:ring-indigo-600"
+                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                    invalidCN="invalid:ring-red-300 valid:ring-green-600"
                     rows={4}
                     defaultValue=""
                     placeholder="Please tell me more about your services."
@@ -250,7 +250,7 @@ export default function FormWithTestimonial({ data }: { data: ContactType }) {
             <div className="mt-10">
               <button
                 type="submit"
-                className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="block w-full rounded-md bg-green-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
                 disabled={isLoading}
               >
                 {isLoading ? (
@@ -265,13 +265,6 @@ export default function FormWithTestimonial({ data }: { data: ContactType }) {
                 )}
               </button>
             </div>
-            <p className="mt-4 text-sm leading-6 text-gray-500">
-              By submitting this form, I agree to the{' '}
-              <Link href="/privacy-policy" className="font-semibold text-indigo-600">
-                privacy&nbsp;policy
-              </Link>
-              .
-            </p>
           </form>
           <div className="lg:mt-6 lg:w-80 lg:flex-none">
             <figure className="mt-10">

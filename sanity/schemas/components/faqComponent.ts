@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Box } from 'lucide-react'
 import { defineField, defineType } from 'sanity'
 import { FAQ_COMPONENT_STYLES } from '../../lib/componentStyles'
@@ -66,16 +67,10 @@ export default defineType({
       name: 'faq',
       title: "FAQ's",
       type: 'array',
-      preview: {
-        select: {
-          title: 'question',
-          subtitle: 'answer',
-        },
-      },
       of: [
         {
           type: 'object',
-          icon: () => '🙋‍♂️',
+          icon: () => '🙋‍♂️' as any,
           fields: [
             {
               name: 'question',

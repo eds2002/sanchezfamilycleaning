@@ -24,7 +24,7 @@ export default function OwnerNotify({
           <Container className="p-4 bg-white">
             <Heading className="my-0 text-3xl font-semibold text-center">A new request!</Heading>
             <Section className="flex flex-row items-center p-3 mt-6 bg-slate-100 rounded-xl gap-x-6">
-              <Text className="flex items-center gap-2 my-0 mt-0 mb-0 text-sm font-medium text-indigo-600">
+              <Text className="flex items-center gap-2 my-0 mt-0 mb-0 text-sm font-medium text-green-600">
                 You&apos;ve gotten a new request from, {firstName}.
               </Text>
             </Section>
@@ -33,7 +33,7 @@ export default function OwnerNotify({
               <Section className="p-4 rounded-xl bg-slate-200">{message}</Section>
               <Link
                 href={`mailto:${email}`}
-                className="relative block px-5 py-4 my-6 text-lg font-semibold text-center text-white bg-indigo-600 rounded-xl"
+                className="relative block px-5 py-4 my-6 text-lg font-semibold text-center text-white bg-green-600 rounded-xl"
               >
                 Email {firstName}
               </Link>

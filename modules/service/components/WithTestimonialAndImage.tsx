@@ -9,6 +9,7 @@ export default function WithTestimonialAndImage({ data }: { data: ServicesType }
     () => data.elements?.filter((e) => e._type === 'service'),
     [data],
   ) as () => Service[]
+
   return (
     <section>
       {formatedData()?.map((element: Service) => (
@@ -19,7 +20,7 @@ export default function WithTestimonialAndImage({ data }: { data: ServicesType }
                 <div className="flex flex-col lg:max-w-lg">
                   <div>
                     {element.isPopular && (
-                      <span className="items-center px-2 py-1 text-sm font-medium text-purple-700 bg-purple-100 rounded-full ">
+                      <span className="items-center px-2 py-1 text-sm font-medium rounded-full text-rose-600 bg-rose-100 ">
                         Popular
                       </span>
                     )}
@@ -28,7 +29,7 @@ export default function WithTestimonialAndImage({ data }: { data: ServicesType }
                     <div className="flex items-center mt-8 gap-x-6">
                       <Link
                         href="/contact"
-                        className="inline-flex rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        className="inline-flex rounded-md bg-green-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
                       >
                         Get a free quote
                       </Link>

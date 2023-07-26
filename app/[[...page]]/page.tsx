@@ -22,6 +22,7 @@ import {
   FAQType,
   GalleryComponentStyles,
   GalleryType,
+  TextEditorType,
 } from '@/modules/interface'
 import Hero from '@/modules/hero'
 import faqGROQ from '@/modules/shared/lib/queries/faqGROQ'
@@ -34,6 +35,8 @@ import { Metadata } from 'next'
 import FAQ from '@/modules/faq'
 import galleryGROQ from '@/modules/shared/lib/queries/galleryGROQ'
 import Gallery from '@/modules/gallery'
+import textEditorGROQ from '@/modules/shared/lib/queries/textEditorGROQ'
+import ProseContent from '@/modules/shared/components/ProseContent'
 
 type Props = {
   params: { page: string[] }
@@ -73,7 +76,8 @@ async function fetchPageDate(slug: string): Promise<PageData> {
       ${ctaGROQ},
       ${contactGROQ},
       ${faqGROQ},
-      ${galleryGROQ}
+      ${galleryGROQ},
+      ${textEditorGROQ}
     }
   }`)
   if (!data?.[0]) return notFound()
@@ -122,6 +126,8 @@ export default async function PageBuilder({
             return (
               <Gallery key={index} data={data as GalleryType} style={data.componentStyle as GalleryComponentStyles} />
             )
+          case 'textEditor':
+            return <ProseContent key={index} data={data as unknown as TextEditorType} />
           default:
             return null
         }

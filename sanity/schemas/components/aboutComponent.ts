@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Box } from 'lucide-react'
 import { defineField, defineType } from 'sanity'
 import { ABOUT_COMPONENT_STYLES } from '../../lib/componentStyles'
@@ -68,7 +69,7 @@ export default defineType({
       of: [
         {
           type: 'object',
-          icon: () => '📅',
+          icon: () => '📅' as any,
           fields: [
             {
               name: 'name',

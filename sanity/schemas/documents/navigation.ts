@@ -22,5 +22,11 @@ export default {
       title: 'Navigation items',
       of: [{ type: 'navigationItem' }],
     },
+    {
+      name: 'mission',
+      type: 'text',
+      title: 'Mission',
+      description: 'This will be for your footer.',
+    },
   ],
 }

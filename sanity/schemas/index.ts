@@ -17,6 +17,7 @@ import navigation from './documents/navigation'
 import link from './objects/link'
 import navItem from './objects/navItem'
 import galleryComponent from './components/galleryComponent'
+import textEditorComponent from './components/textEditorComponent'
 
 export const schemaTypes = [
   service,
@@ -39,4 +40,5 @@ export const schemaTypes = [
   contactComponent,
   faqComponent,
   galleryComponent,
+  textEditorComponent,
 ]

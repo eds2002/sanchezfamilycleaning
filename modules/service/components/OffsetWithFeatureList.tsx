@@ -52,7 +52,7 @@ function Mock({ feature }: { feature: (typeof features)[0] }) {
   return (
     <div key={feature.name} className="relative pl-9">
       <dt className="font-semibold text-gray-900">
-        <CheckIcon className="absolute left-0 w-5 h-5 text-indigo-500 top-1" aria-hidden="true" />
+        <CheckIcon className="absolute left-0 w-5 h-5 text-green-500 top-1" aria-hidden="true" />
         {feature.name}
       </dt>
       <dd className="mt-2">{feature.description}</dd>
@@ -64,7 +64,7 @@ function ServiceBlock({ service }: { service: Service }) {
   return (
     <div key={service._id} className="relative pl-9">
       <dt className="font-semibold text-gray-900">
-        <CheckIcon className="absolute left-0 w-5 h-5 text-indigo-500 top-1" aria-hidden="true" />
+        <CheckIcon className="absolute left-0 w-5 h-5 text-green-500 top-1" aria-hidden="true" />
         {service.title}
       </dt>
       <dd className="mt-2">{service.longDesc}</dd>
@@ -76,7 +76,7 @@ function Custom({ customBlock }: { customBlock: CustomBlock }) {
   return (
     <div key={customBlock._id} className="relative pl-9">
       <dt className="font-semibold text-gray-900">
-        <CheckIcon className="absolute left-0 w-5 h-5 text-indigo-500 top-1" aria-hidden="true" />
+        <CheckIcon className="absolute left-0 w-5 h-5 text-green-500 top-1" aria-hidden="true" />
         {customBlock.value}
       </dt>
       <dd className="mt-2">{customBlock.description}</dd>
@@ -88,7 +88,7 @@ function ValueBlock({ value }: { value: Value }) {
   return (
     <div key={value._id} className="relative pl-9">
       <dt className="font-semibold text-gray-900">
-        <CheckIcon className="absolute left-0 w-5 h-5 text-indigo-500 top-1" aria-hidden="true" />
+        <CheckIcon className="absolute left-0 w-5 h-5 text-green-500 top-1" aria-hidden="true" />
         {value.value}
       </dt>
       <dd className="mt-2">{value.valueDesc}</dd>
@@ -98,7 +98,7 @@ function ValueBlock({ value }: { value: Value }) {
 
 export default function OffsetWithFeatureList({ data }: { data: ServicesType }) {
   return (
-    <div className="py-24 bg-white sm:py-32">
+    <div className="relative py-24 bg-white isolate sm:py-32">
       <div className="px-6 mx-auto max-w-7xl lg:px-8">
         <div className="grid max-w-2xl grid-cols-1 mx-auto gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           <div>

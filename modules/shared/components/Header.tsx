@@ -21,7 +21,7 @@ function Card({ item, close }: { item: any; close: any }) {
         <Icon className="text-xl" size={24} />
       </div>
       {item.isPopular && (
-        <span className="absolute items-center px-2 py-1 text-xs font-medium text-purple-700 bg-purple-100 rounded-full top-6 right-6">
+        <span className="absolute items-center px-2 py-1 text-xs font-medium text-green-600 bg-green-100 rounded-full top-6 right-6">
           Popular
         </span>
       )}
@@ -44,11 +44,11 @@ export default function Header({ header }: { header: Navigation }) {
 
   return (
     <header className="absolute top-0 left-0 right-0 z-10 bg-transparent isolate ">
-      <nav className="flex items-center justify-between w-full p-6 mx-auto max-w-7xl lg:px-8" aria-label="Global">
+      <nav className="flex items-center justify-between w-full px-6 py-2 mx-auto max-w-7xl lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Sanchez Family Cleaning</span>
-            <Image className="w-auto h-8" src="/vercel.svg" alt="" width={32} height={32} />
+            <Image className="mb-5" priority src="/sanchezCleaningLogo.svg" alt="" width={100} height={100} />
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -100,7 +100,7 @@ export default function Header({ header }: { header: Navigation }) {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
             href="/contact"
-            className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="rounded-md bg-green-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
           >
             Get a free quote
           </Link>
@@ -108,15 +108,11 @@ export default function Header({ header }: { header: Navigation }) {
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full px-6 py-6 overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full px-6 py-2 overflow-y-auto bg-white sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Sanchez Family Cleaning</span>
-              <img
-                className="w-auto h-8"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              />
+              <Image className="mb-5" priority src="/sanchezCleaningLogo.svg" alt="" width={100} height={100} />
             </Link>
             <button
               type="button"
@@ -168,7 +164,7 @@ export default function Header({ header }: { header: Navigation }) {
               <div className="py-6">
                 <Link
                   href="/contact"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white  bg-indigo-600 hover:bg-indigo-500 "
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white  bg-green-600 hover:bg-green-500 text-center"
                 >
                   Get a free quote
                 </Link>

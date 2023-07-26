@@ -28,6 +28,7 @@ type Icon =
       name: string
     }
   | undefined
+  | null
 
 type Button = {
   link: string
@@ -206,6 +207,8 @@ interface LinkData {
   title: string
   slug: string
   shortDesc: string | null
+  linkDescription: string | null
+  icon: Icon
   isPopular?: boolean // This is optional because it doesn't appear in all the links
   _type: 'service' | 'page'
   _id: string
@@ -220,4 +223,11 @@ export interface Navigation {
   _id: string
   title: string
   items: Item[]
+  mission: string
+}
+
+export interface TextEditorType {
+  _key: string
+  _type: 'textEditor'
+  textEditor: unknown[]
 }

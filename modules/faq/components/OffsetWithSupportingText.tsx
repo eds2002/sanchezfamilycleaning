@@ -12,10 +12,7 @@ export default function OffsetWithSupportingText({ data }: { data: FAQType }) {
             <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900">Frequently asked questions</h2>
             <p className="mt-4 text-base leading-7 text-gray-600">
               Can&apos;t find the answer you&apos;re looking for? Reach out to our{' '}
-              <Link
-                href={`mailto:${data.supportEmail}`}
-                className="font-semibold text-indigo-600 hover:text-indigo-500"
-              >
+              <Link href={`mailto:${data.supportEmail}`} className="font-semibold text-green-600 hover:text-green-500">
                 customer support
               </Link>{' '}
               team.

@@ -96,6 +96,10 @@ export default defineType({
           name: 'gallery',
           type: 'galleryComponent',
         }),
+        defineArrayMember({
+          name: 'textEditor',
+          type: 'textEditorComponent',
+        }),
       ],
     }),
   ],

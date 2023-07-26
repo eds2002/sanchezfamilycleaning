@@ -41,7 +41,7 @@ export default function Stepped({ data }: { data: AboutType }) {
               </p>
             </div>
           </div>
-          <div className="flex flex-col-reverse justify-between p-8 bg-indigo-600 gap-x-16 gap-y-8 rounded-2xl sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28">
+          <div className="flex flex-col-reverse justify-between p-8 bg-green-600 gap-x-16 gap-y-8 rounded-2xl sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28">
             <p className="flex-none text-3xl font-bold tracking-tight text-white">
               {data.stats?.[2].stat ?? 'Stat 3 statistic'}
             </p>
@@ -49,7 +49,7 @@ export default function Stepped({ data }: { data: AboutType }) {
               <p className="text-lg font-semibold tracking-tight text-white">
                 {data.stats?.[2].statShortDesc ?? 'Stat 3 short description'}
               </p>
-              <p className="mt-2 text-base leading-7 text-indigo-200">
+              <p className="mt-2 text-base leading-7 text-green-200">
                 {data.stats?.[2].statDesc ?? 'Stat 3 long description'}
               </p>
             </div>

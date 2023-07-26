@@ -1,7 +1,7 @@
 /**
  * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...index]]/page.tsx` route
  */
-
+/* eslint-disable */
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
@@ -19,7 +19,7 @@ export default defineConfig({
   // Add and edit the content schema in the './sanity/schema' folder
   document: {
     actions: (prev) =>
-      prev.map((originalAction) => (originalAction.action === 'publish' ? CustomPublishAction : originalAction)),
+      prev.map((originalAction) => (originalAction.action === 'publish' ? CustomPublishAction : originalAction)) as any,
   },
   schema,
   plugins: [
@@ -30,13 +30,3 @@ export default defineConfig({
     iconPicker(),
   ],
 })
-
-export function HelloWorldAction(props) {
-  return {
-    label: 'Hello world',
-    onHandle: () => {
-      // Here you can perform your actions
-      window.alert('👋 Hello from custom action')
-    },
-  }
-}

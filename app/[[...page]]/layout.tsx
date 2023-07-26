@@ -7,40 +7,13 @@ import { client } from '@/sanity/lib/client'
 import QueryClientProvider from '@/modules/shared/lib/QueryClientProvider'
 import NextTopLoader from 'nextjs-toploader'
 import { Toaster } from 'react-hot-toast'
-import { groq } from 'next-sanity'
 import { Navigation } from '@/modules/interface'
+import navigationGROQ from '@/modules/shared/lib/queries/mainMenuGROQ'
+import footerMenuGROQ from '@/modules/shared/lib/queries/footerMenuGROQ'
 
 async function fetchHeader() {
   try {
-    const res = (await client.fetch(groq`*[_type == "navigation" && title == 'Main Menu'][0]{
-        _id,
-        title,
-        "items":items[]{
-          text,
-          "linkData":navigationItemUrl.internalLinks[]{
-            icon,
-            ...reference->{
-              ...select(
-                _type == "service" => {
-                  _type,
-                  "_id": _id,
-                  title,
-                  "slug": "service/" + slug.current,
-                  shortDesc,
-                  isPopular,
-                },
-                _type == "page" => {
-                  _type,
-                  "_id": _id,
-                  title,
-                  "slug": slug.current,
-                  "shortDesc": metadata.description,
-                }
-              )
-            }
-          },
-        }
-      }`)) as Navigation
+    const res = (await client.fetch(navigationGROQ)) as Navigation
     // TODO: remove this when we have a better way to handle this
     res.items = res.items.map((item) => {
       item.linkData = item.linkData.map((link) => ({
@@ -51,38 +24,15 @@ async function fetchHeader() {
     })
     return res
   } catch (e) {
-    console.error(e)
+    throw new Error(`Failed to fetch header. ERROR=>${e}`)
   }
 }
 async function fetchFooter() {
   try {
-    const res = await client.fetch(groq`*[_type == "navigation" && title == 'footer'][0]{
-      _id,
-      title,
-      "items":items[]{
-        text,
-        "links":navigationItemUrl.internalLink[]->{
-          _type,
-          "slug":slug.current,
-          ...select(
-            _type == "service" => {
-              "_id": _id,
-              "slug": "/service/" + slug.current,
-              shortDesc,
-              isPopular,
-            },
-            _type == "page" => {
-              ...,
-              "_id": _id,
-              "slug": slug.current,
-            }
-          )
-        }
-      }
-    }`)
+    const res = (await client.fetch(footerMenuGROQ)) as Navigation
     // TODO: remove this when we have a better way to handle this
-    res.items = res.items.map((item) => {
-      item.linkData = item.linkData.map((link) => ({
+    res.items = res?.items?.map((item) => {
+      item.linkData = item?.linkData?.map((link) => ({
         ...link,
         slug: link.slug === 'home' ? '/' : `/${link.slug}`,
       }))
@@ -91,7 +41,7 @@ async function fetchFooter() {
 
     return res
   } catch (e) {
-    console.error(e)
+    throw new Error(`Failed to fetch footer. ERROR=>${e}`)
   }
 }
 
@@ -99,12 +49,19 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const [header, footer] = await Promise.all([fetchHeader(), fetchFooter()])
   return (
     <html lang="en">
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+      <link rel="manifest" href="/site.webmanifest" />
+      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+      <meta name="msapplication-TileColor" content="#da532c" />
+      <meta name="theme-color" content="transparent" />
       <body>
         <QueryClientProvider>
           <Header header={header} />
-          <NextTopLoader color="#4f46e5" />
+          <NextTopLoader color="#16a34a" showSpinner={false} />
           {children}
-          <Footer />
+          <Footer footer={footer} />
         </QueryClientProvider>
         <Toaster />
       </body>

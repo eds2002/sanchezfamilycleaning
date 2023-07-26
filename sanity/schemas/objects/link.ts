@@ -29,6 +29,12 @@ export default {
               type: 'reference',
               to: [{ type: 'page' }, { type: 'service' }],
             },
+            {
+              name: 'linkDescription',
+              title: 'Link Description',
+              type: 'text',
+              description: 'This will be used for the navigation menu',
+            },
           ],
         },
       ],
