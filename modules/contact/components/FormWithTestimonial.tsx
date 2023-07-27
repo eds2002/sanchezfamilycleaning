@@ -219,9 +219,8 @@ export default function FormWithTestimonial({ data }: { data: ContactType }) {
                     value={formData.phoneNumber}
                     id="phone-number"
                     autoComplete="tel"
-                    pattern="^(\+?\d{1,4}[\s-])?(?!0+\s+,?$)\d{10}\s*,?$"
                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
-                    invalidCN="invalid:ring-red-300 valid:ring-green-600"
+                    invalidCN=""
                     placeholder="(555) 234-5678"
                   />
                 </div>
