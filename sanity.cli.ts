@@ -1,4 +1,9 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-param-reassign */
+
+// @ts-nocheck
+
 import path from 'path'
 import { defineCliConfig } from 'sanity/cli'
 
