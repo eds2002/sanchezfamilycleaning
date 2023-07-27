@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from 'react'
 import { useDocumentOperation } from 'sanity'
-import slugify from 'slugify'
 import { groq } from 'next-sanity'
+import slugify from '../../modules/shared/utils/slugify'
 import { client } from '../lib/client'
 
 const SCHEMAS_WITH_CUSTOM_PUBLISH_ACTION = ['page']
@@ -22,7 +22,7 @@ async function getSlug(reference: string, fallback: string) {
     }
     return refDoc.slug
   }
-  return slugify(fallback, { lower: true })
+  return slugify(fallback)
 }
 
 export default function CustomPublishAction(props: any) {

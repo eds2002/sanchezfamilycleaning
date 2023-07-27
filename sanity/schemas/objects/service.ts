@@ -1,5 +1,5 @@
+import slugify from '@/modules/shared/utils/slugify'
 import type { Rule } from 'sanity'
-import { slugify } from '@/modules/shared/utils/slugify'
 
 export default {
   name: 'service',
