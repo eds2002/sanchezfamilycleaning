@@ -3,7 +3,7 @@ import React from 'react'
 export default function GaussianBlur({ clipPath }: { clipPath?: string }) {
   return (
     <div
-      className="absolute inset-x-0 overflow-hidden -top-40 -z-10 transform-gpu blur-3xl sm:-top-80"
+      className="absolute inset-x-0 overflow-hidden pointer-events-none -top-40 -z-10 transform-gpu blur-3xl sm:-top-80"
       aria-hidden="true"
     >
       <div

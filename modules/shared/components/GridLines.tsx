@@ -3,7 +3,7 @@ import React from 'react'
 export default function GridLines() {
   return (
     <svg
-      className="absolute inset-x-0 top-0 -z-10 h-[64rem] w-full stroke-gray-200 [mask-image:radial-gradient(32rem_32rem_at_center,white,transparent)]"
+      className="absolute inset-x-0 top-0 -z-10 h-[64rem] w-full stroke-gray-200 [mask-image:radial-gradient(32rem_32rem_at_center,white,transparent)] pointer-events-none"
       aria-hidden="true"
     >
       <defs>

@@ -39,7 +39,7 @@ export default function Footer({ footer }: { footer: Navigation }) {
               {formattedFooter?.map((item, idx) => (
                 <React.Fragment key={item.text}>
                   {idx < 2 && (
-                    <div className={`${idx === 1 ? 'mt-10 md:mt-0' : ''}`}>
+                    <div className={idx === 1 ? 'mt-10 md:mt-0' : ''}>
                       <h3 className="text-sm font-semibold leading-6 text-green-400">{item.text}</h3>
                       <ul className="mt-6 space-y-4">
                         {item.linkData.map((supportLink) => (
@@ -59,7 +59,7 @@ export default function Footer({ footer }: { footer: Navigation }) {
               {formattedFooter?.map((item, idx) => (
                 <React.Fragment key={item.text}>
                   {idx >= 2 && (
-                    <div className={`${idx === 3 ? 'mt-10 md:mt-0' : ''}`}>
+                    <div className={idx === 3 ? 'mt-10 md:mt-0' : ''}>
                       <h3 className="text-sm font-semibold leading-6 text-green-400">{item.text}</h3>
                       <ul className="mt-6 space-y-4">
                         {item.linkData.map((supportLink) => (
