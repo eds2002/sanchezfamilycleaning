@@ -15,7 +15,12 @@ export default function ThreeColumnWithSupportingText({ data }: { data: FAQType 
         <p className="max-w-2xl mt-6 text-base leading-7 text-gray-600">
           Have a different question and can&apos;t find the answer you&apos;re looking for? Reach out to our support
           team by{' '}
-          <Link href={`mailto:${data.supportEmail}`} className="font-semibold text-green-600 hover:text-green-500">
+          <Link
+            href={`mailto:${data.supportEmail}`}
+            className="font-semibold text-green-600 hover:text-green-500"
+            target="_blank"
+            rel="noreferrer"
+          >
             sending us an email
           </Link>{' '}
           and we&apos;ll get back to you as soon as we can.

@@ -13,7 +13,7 @@ export default function WithTestimonialAndImage({ data }: { data: ServicesType }
   return (
     <section>
       {formatedData()?.map((element: Service) => (
-        <div key={element._id} className="py-24 overflow-hidden bg-white sm:py-32">
+        <div key={element._id} className="py-16 overflow-hidden bg-white sm:py-24">
           <div className="px-6 mx-auto max-w-7xl lg:px-8">
             <div className="grid max-w-2xl grid-cols-1 mx-auto gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start">
               <div className="lg:pr-4 lg:pt-4">
@@ -33,7 +33,7 @@ export default function WithTestimonialAndImage({ data }: { data: ServicesType }
                       >
                         Get a free quote
                       </Link>
-                      <Link href={`${element.link}`} className="text-sm font-semibold leading-6 text-gray-900">
+                      <Link href={element.link} className="text-sm font-semibold leading-6 text-gray-900">
                         Learn more <span aria-hidden="true">→</span>
                       </Link>
                     </div>
@@ -60,7 +60,7 @@ export default function WithTestimonialAndImage({ data }: { data: ServicesType }
                 </div>
               </div>
               <div className={`relative `}>
-                <div className="relative  aspect-video w-[2432px] max-h-[30rem] max-w-[50rem]">
+                <div className="relative  aspect-video lg:aspect-[16/12] xl:aspect-video xl:w-[2432px] max-h-[30rem] max-w-[50rem]">
                   <Image
                     src={element.image.image}
                     alt={element.image.caption}
