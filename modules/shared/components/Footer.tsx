@@ -21,7 +21,7 @@ export default function Footer({ footer }: { footer: Navigation }) {
       <div className="px-6 pt-16 pb-8 mx-auto max-w-7xl sm:pt-24 lg:px-8 lg:pt-32">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
-            <div className="relative w-40 h-20 -top-8">
+            <div className="relative w-40 h-20 -top-8 -left-8">
               <Image
                 priority
                 src="/sanchezCleaningLogoWhite.svg"
